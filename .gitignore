@@ -1,4 +1,6 @@
 /Hotel/nbproject/private/
-*.xml
-*.mf
+/nbproject/private/
+build.xml
 *.properties
+manifest.mf
+*.xml
