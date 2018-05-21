@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.swing.JOptionPane;
 
 /**
- *
  * @author Cidmar
  */
 public class Custos {
-    //TODO Água
-    //TODO Luz
-    //TODO Mantimentos
-    //TODO Manutenção(Técnica)
-    //TODO Funcionários
-    //TODO Limpeza
-    //TODO Telefone e Internet
+    double[] aguaCustos = new double[100];
+    double[] luzCustos = new double[100];
+    double[] custoDosMantimentos = new double[100];
+    double[] custoDasManutencoes = new double[100];
+    double[] gastosComFuncionarios = new double[100];
+    double[] gastosComLimpezas = new double[100];
+    double[] gastosComTelefoneEInternets = new double[100];
+    
+    
 }
