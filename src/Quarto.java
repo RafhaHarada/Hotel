@@ -9,5 +9,11 @@
  * @author Alunos
  */
 public class Quarto {
-    
+    //TODO Tamanho
+    //TODO Camas
+    //TODO Nome
+    //TODO Numero
+    //TODO Andar
+    //TODO Avaliação
+    //TODO Preço
 }

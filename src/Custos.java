@@ -9,11 +9,11 @@
  * @author Alunos
  */
 public class Custos {
-    //TODO Tamanho
-    //TODO Camas
-    //TODO Nome
-    //TODO Numero
-    //TODO Andar
-    //TODO Avaliação
-    //TODO Preço
+    //TODO Água
+    //TODO Luz
+    //TODO Mantimentos
+    //TODO Manutenção(Técnica)
+    //TODO Funcionários
+    //TODO Limpeza
+    //TODO Telefone e Internet
 }
