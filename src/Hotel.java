@@ -9,5 +9,11 @@
  * @author Alunos
  */
 public class Hotel {
-    
+    //TODO Nome
+    //TODO Endereço
+    //TODO Telefone
+    //TODO Email
+    //TODO Avaliação
+    //TODO Quantidade de Quartos
+    //TODO Estatística
 }
