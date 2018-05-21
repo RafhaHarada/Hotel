@@ -6,8 +6,16 @@
 
 /**
  *
- * @author Alunos
+ * @author Sara
  */
 public class Funcionario {
+    //TODO Nome
+    //TODO Idade
+    //TODO Sexo
+    //TODO Cargo
+    //TODO Carga horária
+    //TODO Salário
+    //TODO Desempenho
+    
     
 }

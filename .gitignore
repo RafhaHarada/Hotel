@@ -4,3 +4,4 @@ build.xml
 *.properties
 manifest.mf
 *.xml
+/hotel/nbproject/private/

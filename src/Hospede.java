@@ -6,8 +6,14 @@
 
 /**
  *
- * @author Alunos
+ * @author Sara
  */
 public class Hospede {
-    
+  //TODO Nome
+  //TODO Idade
+  //TODO Sexo
+  //TODO Check-in
+  //TODO Check-out
+  //TODO Quarto
+  //TODO Receita Cliente
 }
