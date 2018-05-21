@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Alunos
+ * @author Rafael Alipio Harada
  */
 public class Principal {
 
