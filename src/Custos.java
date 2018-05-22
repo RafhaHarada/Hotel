@@ -21,8 +21,32 @@ public class Custos {
                 "\n2- Editar custos" +
                 "\n3- Listar custos" +
                 "\n4- Buscar pelo mês" +
-                "\n5- Finalizar"
-        ));
+                "\n5- Finalizar"));
+        while (menuCustos != 5) {
+            switch (menuCustos) {
+                case 1:
+                    cadastrar();
+                    break;
+                case 2:
+                    editar();
+                    break;
+                case 3:
+                    listar();
+                    break;
+                case 4:
+                    buscarPeloMes();
+                    break;
+                
+                default:
+                    JOptionPane.showMessageDialog(null, "Opção inválida");
+            }
+            menuCustos = Integer.parseInt(JOptionPane.showInputDialog(
+                "1- Cadastrar custos" +
+                "\n2- Editar custos" +
+                "\n3- Listar custos" +
+                "\n4- Buscar pelo mês" +
+                "\n5- Finalizar"));
+        }
         
     }
 
@@ -41,7 +65,7 @@ public class Custos {
         aguaCustos[mes-1] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Digite o número equivalente ao mês que deseja editar." 
-                + "\nExemplo: Se deseja editar o ~ês de Outubro digite 10"
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
         ));
             
         
@@ -63,7 +87,7 @@ public class Custos {
     public void buscarPeloMes(){
         int mesDesejado = Integer.parseInt(
             JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja visualizar(1 ao 12)." 
+                "Digite o número equivalente ao mês que deseja visualizar." 
                 + "\nExemplo: Se desejar visualizar o mês de Fevereiro digite 2"
         ));
     }
