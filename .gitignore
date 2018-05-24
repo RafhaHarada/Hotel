@@ -1,0 +1,11 @@
+/Hotel/nbproject/private/
+/nbproject/private/
+build.xml
+*.properties
+manifest.mf
+*.xml
+/hotel/nbproject/private/
+*.class
+/JavaApplication2/nbproject/private/
+/build/
+/dist/
