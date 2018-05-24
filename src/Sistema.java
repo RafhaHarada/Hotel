@@ -23,11 +23,7 @@ public class Sistema {
     
     public void apresentarMenu() {
         
-        JOptionPane.showMessageDialog(null, null, "Administration Hotel", JOptionPane.PLAIN_MESSAGE, new ImageIcon(
-            Sistema.class.getResource
-            ("/imagens/logo.gif"))
-        );
-        JOptionPane.showMessageDialog(null, "                       Seja Bem Vindo Ao\n                     Administration   Hotel\n", "Administration Hotel", JOptionPane.PLAIN_MESSAGE);
+        
         
         Hotel hotel = new Hotel();
         hotel.Cadastrar();
