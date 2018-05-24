@@ -41,7 +41,7 @@ public class Funcionario {
 			       +"\n2 - Editar funcionários"
 			       +"\n3 - Listar funcionários"
 			       +"\n4 - Pesquisar pelo nome"
-			       +"\n5 - Buscar pelo cargo"
+			       +"\n5 - Pesquisar pelo cargo"
 			       +"\n6 - Finalizar"));
 		while (menuFuncionarios != 6 ){
 			switch (menuFuncionarios){
@@ -69,7 +69,7 @@ public class Funcionario {
 			       +"\n2 - Editar funcionários"
 			       +"\n3 - Listar funcionários"
          		       +"\n4 - Pesquisar pelo nome"
-			       +"\n5 - Buscar por cargo"
+			       +"\n5 - Pesquisar pelo cargo"
 			       +"\n6 - Finalizar"));
 		       }
                }
@@ -94,7 +94,7 @@ public class Funcionario {
         }
        }
       
-      public void BuscarPeloCargo() {
+      public void PesquisarPeloCargo() {
           String buscar = (String) JOptionPane.showInputDialog("Digite o cargo para pesquisar funcionários :");
         for  (int i = 0; i <atual; i++){
             if (cargos[i].contains(buscar)) {
@@ -141,6 +141,8 @@ public class Funcionario {
         maiorSalario = salarios[posicao];
     }
     }
+	    
+	  
     
     
     
