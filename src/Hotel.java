@@ -20,7 +20,7 @@ public class Hotel {
                 "Primeiramente, cadastraremos seu hotel.\nPor favor insira o nome do Hotel",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
-                .trim();
+                .trim();/*
         String endereco = JOptionPane.showInputDialog(null,
                 "Por favor insira o endereço do " + hotelNome + ":",
                 "Cadastro do Hotel",
@@ -45,7 +45,7 @@ public class Hotel {
                 null,
                 estrelasAvaliacao,
                 estrelasAvaliacao[0])
-                .toString();
+                .toString();*/
         hotelQuartos = Integer.parseInt(JOptionPane.showInputDialog(null,
             "Por favor insira a quantidade de quartos do " + hotelNome + ":",
             "Cadastro do Hotel",

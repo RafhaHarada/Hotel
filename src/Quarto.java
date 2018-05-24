@@ -55,13 +55,13 @@ public class Quarto {
                 case 2:
                     naoCadastradosQuarto();
                     break;
-                case 4:
+                case 3:
                     buscarQuarto();
                     break;
-                case 5:
+                case 4:
                     editarQuarto();
                     break;
-                case 6:
+                case 5:
                     return;
                 default:
                     JOptionPane.showMessageDialog(null, "Opção Inválida", "Error 001", JOptionPane.ERROR_MESSAGE);
@@ -94,15 +94,6 @@ public class Quarto {
                     JOptionPane.INFORMATION_MESSAGE
             );
             for (int i = 0; i < 4; i++) {
-                precoCama[i] = Double.parseDouble(JOptionPane.showInputDialog(null,
-                        "Classificação por pessoa de Quartos:\n"
-                        + "\n-SOLTEIRO: Quarto com uma cama de solteiro"
-                        + "\n-CASAL: Quarto com uma cama de casal"
-                        + "\n-DUPLO SOLTEIRO: Quarto com duas camas de solteiros"
-                        + "\n-FAMILIA: Quarto com uma camas de casal e uma beliche para dois\n"
-                        + "\nInsira o preço a ser cobrado das camas " + camas[i].toString(),
-                        "Valor por Camas",
-                        JOptionPane.QUESTION_MESSAGE));
                 precoTipo[i] = Integer.parseInt(JOptionPane.showInputDialog(null,
                         "Tipos de Quartos:\n"
                         + "\n-STANDARD: Quarto com mobilia comum e serviços básicos "
@@ -113,8 +104,19 @@ public class Quarto {
                         "Valor por Tipo",
                         JOptionPane.QUESTION_MESSAGE));
             }
+            for (int i = 0; i < 4; i++) {
+                precoCama[i] = Double.parseDouble(JOptionPane.showInputDialog(null,
+                        "Classificação por pessoa de Quartos:\n"
+                        + "\n-SOLTEIRO: Quarto com uma cama de solteiro"
+                        + "\n-CASAL: Quarto com uma cama de casal"
+                        + "\n-DUPLO SOLTEIRO: Quarto com duas camas de solteiros"
+                        + "\n-FAMILIA: Quarto com uma camas de casal e uma beliche para dois\n"
+                        + "\nInsira o preço a ser cobrado das camas " + camas[i].toString(),
+                        "Valor por Camas",
+                        JOptionPane.QUESTION_MESSAGE));
+            }
         }
-        if (adicionador == numero.length) {
+        if (adicionador == Hotel.hotelQuartos) {
             JOptionPane.showMessageDialog(null, "Você já cadastrou o número máximo de quartos.", "Ops...", JOptionPane.WARNING_MESSAGE);
         } else {
             solicitacaoQuarto(adicionador);
@@ -154,15 +156,17 @@ public class Quarto {
     }
 
     public void cadastradosQuarto() {
+        if (adicionador != 0) {
         String texto = "";
         for (int i = 0; i < numero.length; i++) {
-            if (adicionador != 0) {
+            
                 texto += "Quarto nº" + numero[i] + "\n";
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
-            }
+            
         }
         JOptionPane.showMessageDialog(null, "Os quartos cadastrados são:\n" + texto, "Quartos Cadastrados", JOptionPane.WARNING_MESSAGE);
+        } else {
+                JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
+            }
 
     }
 
@@ -200,21 +204,21 @@ public class Quarto {
                 tipo,
                 tipo[0])
                 .toString());
-        while (posicao > 3 && posicao < 0) {
-            quartoTipo[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "Tipos de Quartos:\n"
-                    + "\n-STANDARD: Quarto com mobilia comum e serviços básicos "
-                    + "\n-SUITE: Standard com banheiro e maior qualidade de mobilia e serviços"
-                    + "\n-EXECUTIVO: Suite com sala e maior qualidade de mobilia e serviços"
-                    + "\n-DELUXE: Executivo com cozinha e maior qualidade de mobilia e serviços",
-                    "Cadastro do Quarto",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    tipo,
-                    tipo[0])
-                    .toString());
-        }
-        preco[posicao] = precoTipo[quartoTipo[posicao]];
+            while (posicao > 3 && posicao < 0) {
+                quartoTipo[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Tipos de Quartos:\n"
+                + "\n-STANDARD: Quarto com mobilia comum e serviços básicos "
+                + "\n-SUITE: Standard com banheiro e maior qualidade de mobilia e serviços"
+                + "\n-EXECUTIVO: Suite com sala e maior qualidade de mobilia e serviços"
+                + "\n-DELUXE: Executivo com cozinha e maior qualidade de mobilia e serviços",
+                "Cadastro do Quarto",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                tipo,
+                tipo[0])
+                .toString());
+            }
+            preco[posicao] = precoTipo[quartoTipo[posicao]];
         quartoCamas[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
                 "Classifique o quarto por pessoa:"
                 + "\nOBS:Classificação por pessoa de Quartos:\n"
@@ -293,26 +297,26 @@ public class Quarto {
             }
             String escolha = JOptionPane.showInputDialog(null, "Escolha o quarto a ser editado.", "Editar", JOptionPane.QUESTION_MESSAGE, null, auxiliar, auxiliar[0]).toString();
             for (int i = 0; i < numero.length; i++) {
-                if (escolha.equals(Hospede.quarto[i])) {
+                if (escolha.equals(Hospede.quartos[i])) {
                     if (Hospede.status[i] == 1) {
                         JOptionPane.showMessageDialog(null,
                                 "\nStatus: Ocupado"
-                                + "\nNome do Hospede: " + Hospede.nome[i]
-                                + "\nNúmero do quarto: " + Hospede.quarto[i]
+                                + "\nNome do Hospede: " + Hospede.nomes[i]
+                                + "\nNúmero do quarto: " + Hospede.quartos[i]
                                 + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
                                 + " para " + camas[quartoCamas[i]]
-                                + "Andar: " + andares[i]
+                                        + "Andar: " + andares[i]
                                 + "\nDesocupação:" + Hospede.checkout[i],
                                 "Informações do Quarto" + escolha.toString(),
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null,
                                 "\nStatus: Desocupado"
-                                + "\nNúmero do quarto: " + Hospede.quarto[i]
+                                + "\nNúmero do quarto: " + Hospede.quartos[i]
                                 + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
                                 + " para " + camas[quartoCamas[i]]
-                                + "Andar: " + andares[i]
-                                + "\nPreço: R$" + String.format("%.2f", preco[i]),
+                                        + "Andar: " + andares[i]
+                                + "\nPreço: R$" + String.format("%.2f",preco[i]),
                                 "Informações do Quarto" + escolha.toString(),
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
