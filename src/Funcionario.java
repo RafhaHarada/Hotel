@@ -33,10 +33,47 @@ public class Funcionario {
       public void cadastrar() {        solicitarInformacao(atual);
         atual++;
     }
-
-    
-    
-      
+	
+	public void menuFuncionarios(){
+		int menufuncionarios = Integer.parseInt(
+			JOptionPane.showInputDialog(
+				"1 - Cadastrar funcionários" 
+			       +"\n2 - Editar funcionários"
+			       +"\n3 - Listar funcionários"
+			       +"\n4 - Pesquisar pelo nome"
+			       +"\n5 - Buscar pelo cargo"
+			       +"\n6 - Finalizar"));
+		while (menuFuncionarios != 6 ){
+			switch (menuFuncionarios){
+				case 1:
+					Cadastrar();
+					break;
+				case 2:
+					Editar();
+					break;
+				case 3:
+					Listar();
+					break;
+				case 4:
+					PesquisarPeloNome();
+					break;
+				case 5:
+					BuscarPeloCargo();
+					break;
+					
+				default:
+					JOptionPane.showMessageDialog(null, "Opção inválida");
+			}
+			menuFuncionarios = Integer.parseInt(JOptionPane.showInputDialog(
+				"1 - Cadastrar funcionários"
+			       +"\n2 - Editar funcionários"
+			       +"\n3 - Listar funcionários"
+         		       +"\n4 - Pesquisar pelo nome"
+			       +"\n5 - Buscar por cargo"
+			       +"\n6 - Finalizar"));
+		       }
+               }
+	
       public void Editar() {
            String procurar = (String) JOptionPane.showInputDialog("Informe o nome  para editar");
         for (int i = 0; i < atual; i++) {
@@ -48,7 +85,7 @@ public class Funcionario {
       }
         
     
-      public void PesquisarPorNome() {
+      public void PesquisarPeloNome() {
            String buscar = (String) JOptionPane.showInputDialog("Digite o nome do funcionário para pesquisar :");
         for (int i = 0; i <atual; i++){
             if (nomes[i].contains(buscar)) {
@@ -79,7 +116,7 @@ public class Funcionario {
        }      
       
     
-    public void solicitarInformacao(int atual1) {
+    public void Cadastrar(int atual1) {
         nomes[atual] =JOptionPane.showInputDialog("Digite o nome do funcionário :");
         idades[atual] = Integer.parseInt(JOptionPane.showInputDialog(" Informe a idade deste funcionátio :"));
         String string = " Informe o sexo deste funcionário :";
