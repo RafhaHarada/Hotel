@@ -54,8 +54,8 @@ public class Sistema {
                 case 1:
                     quarto.menu();
                     break;
-                case 2:/*
-                    hospede.menu();*/
+                case 2:
+                    hospede.menu();
                     break;
                 case 3:/*
                     custos.menu();*/
