@@ -1,3 +1,6 @@
+import static java.lang.Character.toString;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,11 +28,14 @@ public class Funcionario {
     double[] salarios = new double[1000];
     String[] desempenhos = new String[1000];
     int atual = 0;
+
     
-      public void cadastrar() {
-        solicitarInformacao(atual);
+      public void cadastrar() {        solicitarInformacao(atual);
         atual++;
     }
+
+    
+    
       
       public void Editar() {
            String procurar = (String) JOptionPane.showInputDialog("Informe o nome  para editar");
@@ -73,14 +79,15 @@ public class Funcionario {
        }      
       
     
-    public void solicitarInformacao(int posicao) {
-        nomes[posicao] = (String) JOptionPane.showInputDialog("Digite o nome do funcionário :");
-        idades[posicao] = Integer.parseInt((String) JOptionPane.showInputDialog(" Informe a idade deste funcionátio :"));
-        sexos[posicao] = (char) JOptionPane.showInputDialog(" Informe o sexo deste funcionário :");
-        cargos[posicao] =(String) JOptionPane.showInputDialog("Digite o cargo que este funcionário exerce :");
-        cargasHorarias[posicao] = Integer.parseInt((String) JOptionPane.showInputDialog("Digite a carga horária deste funcionário :"));    
-        salarios[posicao] = Double.parseDouble ((String) JOptionPane.showInputDialog("Digite o salário deste funcionário :"));
-        desempenhos[posicao] = (String) JOptionPane.showInputDialog (" Descreva o desemepenho deste funcionário :");
+    public void solicitarInformacao(int atual1) {
+        nomes[atual] =JOptionPane.showInputDialog("Digite o nome do funcionário :");
+        idades[atual] = Integer.parseInt(JOptionPane.showInputDialog(" Informe a idade deste funcionátio :"));
+        String string = " Informe o sexo deste funcionário :";
+		sexos[atual] =JOptionPane.showInputDialog(stringCharacter.toString());
+        cargos[atual] =JOptionPane.showInputDialog("Digite o cargo que este funcionário exerce :");
+        cargasHorarias[atual] = Integer.parseInt(JOptionPane.showInputDialog("Digite a carga horária deste funcionário :"));    
+        salarios[atual] = Double.parseDouble(JOptionPane.showInputDialog("Digite o salário deste funcionário :"));
+        desempenhos[atual] = JOptionPane.showInputDialog (" Descreva o desemepenho deste funcionário :");
 
     
     double menorSalario = Double.MAX_VALUE;
@@ -89,6 +96,7 @@ public class Funcionario {
     
     
     for (int i =0; i > 2; i++ ){
+            int posicao = 0;
          if (salarios[posicao] <menorSalario){
         menorSalario = salarios[posicao];
     }
