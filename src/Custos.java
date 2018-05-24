@@ -67,6 +67,42 @@ public class Custos {
                 "Digite o número equivalente ao mês que deseja editar." 
                 + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
         ));
+        
+        energiaCustos[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
+        
+        gastosComMantimentos[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
+        
+        gastosComManutencoes[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
+        
+        gastosComFuncionarios[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
+        
+        gastosComLimpezas[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
+        
+        gastosComTelefoneEInternets[mes-1] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Digite o número equivalente ao mês que deseja editar." 
+                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
+        ));
             
         
     }
@@ -90,6 +126,25 @@ public class Custos {
                 "Digite o número equivalente ao mês que deseja visualizar." 
                 + "\nExemplo: Se desejar visualizar o mês de Fevereiro digite 2"
         ));
+        
+        for(int i = 0; i < atual; i++){
+           if(aguaCustos.equals(mesDesejado)){
+               apresentarInformacao(i);
+           }
+               
+           }
+        }
+    
+    public void apresentarInformacao(int posicao){
+        JOptionPane.showMessageDialog(null, 
+                "Água: " + aguaCustos[posicao]
+                + "\nEnergia: " + energiaCustos[posicao]
+                + "\nMantimentos: " + gastosComMantimentos[posicao]
+                + "\nManutenção: " + gastosComManutencoes[posicao]
+                + "\nFuncionários: " + gastosComFuncionarios[posicao]
+                + "\nLimpeza: " + gastosComLimpezas[posicao]
+                + "\nTelefone e Internet: " + gastosComTelefoneEInternets[posicao]
+        );
     }
             
     public void solicitarInformacao(int posicao){
