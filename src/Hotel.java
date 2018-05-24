@@ -11,16 +11,22 @@ import javax.swing.JOptionPane;
  * @author Rafael Alipio Harada
  */
 public class Hotel {
-    static int hotelAndares = 0;
-    static int hotelQuartos = 0;
-            
-    public static void Cadastrar() {
-
-        String hotelNome = JOptionPane.showInputDialog(null,
+    static String hotelNome = JOptionPane.showInputDialog(null,
                 "Primeiramente, cadastraremos seu hotel.\nPor favor insira o nome do Hotel",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
-                .trim();/*
+                .trim();
+    static int hotelAndares = Integer.parseInt(JOptionPane.showInputDialog(null,
+            "Por favor insira a quantidade de andares do " + hotelNome + ":",
+            "Cadastro do Hotel",
+            JOptionPane.QUESTION_MESSAGE));
+    static int hotelQuartos = Integer.parseInt(JOptionPane.showInputDialog(null,
+            "Por favor insira a quantidade de quartos do " + hotelNome + ":",
+            "Cadastro do Hotel",
+            JOptionPane.QUESTION_MESSAGE));
+            
+    public static void Cadastrar() {
+
         String endereco = JOptionPane.showInputDialog(null,
                 "Por favor insira o endereço do " + hotelNome + ":",
                 "Cadastro do Hotel",
@@ -45,15 +51,7 @@ public class Hotel {
                 null,
                 estrelasAvaliacao,
                 estrelasAvaliacao[0])
-                .toString();*/
-        hotelQuartos = Integer.parseInt(JOptionPane.showInputDialog(null,
-            "Por favor insira a quantidade de quartos do " + hotelNome + ":",
-            "Cadastro do Hotel",
-            JOptionPane.QUESTION_MESSAGE));
-        hotelAndares = Integer.parseInt(JOptionPane.showInputDialog(null,
-            "Por favor insira a quantidade de andares do " + hotelNome + ":",
-            "Cadastro do Hotel",
-            JOptionPane.QUESTION_MESSAGE));
+                .toString();
     // TODO Estatístic
     }
 }
