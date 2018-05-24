@@ -116,7 +116,7 @@ public class Funcionario {
        }      
       
     
-    public void Cadastrar(int atual1) {
+    public void solicitarInformacao(int atual1) {
         nomes[atual] =JOptionPane.showInputDialog("Digite o nome do funcionário :");
         idades[atual] = Integer.parseInt(JOptionPane.showInputDialog(" Informe a idade deste funcionátio :"));
         String string = " Informe o sexo deste funcionário :";
