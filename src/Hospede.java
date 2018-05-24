@@ -31,6 +31,19 @@ public class Hospede {
         solicitarInformacao(atual);
         atual++;
     }
+  
+  public void menuHospedes(){
+        int menuHospedes = Integer.parseInt(
+            JOptionPane.showInputDialog(
+                "1 - Cadastrar hóspedes"
+               +"\n2 - Editar hóspedes"
+               +"\n3 - Listar hóspedes"
+               +"\n4 - Pesquisar por nome"
+               +"\n5 - Pesquisar por check-in"
+               +"\n6 - Pesquisar por check-out"
+               +"\n7 - Finalizar"));
+        
+    }
     
     public void Editar(){
         String procurar = (String) JOptionPane.showInputDialog("Digite o nome do hóspede para editar :");
@@ -60,12 +73,38 @@ public class Hospede {
         }
        }
     
-    public void apresentarInformacao(int posicao) {}
+  
+       public void PesquisarPorCheckOut(){
+        String pesquisar =(String) JOptionPane.showInputDialog(" Digite a data de check-out para pesquisar :");
+          for (int i = 0; i <atual; i++){
+              if ((""+checkout[i]).contains(pesquisar)) {
+                  apresentarInformacao(i);
+              }
+          }
+         }
+  
+    public void apresentarInformacao(int posicao) {
+     JOptionPane.showMessageDialog(null,
+                "Nome: " + nomes[posicao]
+                + "\nIdade: " + idades[posicao]
+                + "\nSexo: " + sexos[posicao]
+                + "\nCheck-in: " + checkin[posicao]
+                + "\nCheck-out: " + checkout[posicao]
+                + "\nNº do quarto: " + quartos[posicao]
+                + "\nReceita: " + receita[posicao]);
+        
+       }      }
 
     public void solicitarInformacao(int posicao) {
     nomes[posicao] = (String) JOptionPane.showInputDialog("Informe o nome do funcionário :");
     idades[posicao] = Integer.parseInt((String) JOptionPane.showInputDialog("Digite a idade deste funcionário: "));
-    sexos[posicao] = (char) JOptionpane.show}
+    String string = " Informe o sexo deste funcionário: ";
+    sexos[posicao] =JOptionPane.showInputDialog(stringCharacter.toString());
+    checkin[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Digite a data de check-in deste hóspede: "));
+    checkout[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Digite a data de check-out deste hóspede: "));
+    quartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog("informe o quarto em que este hóspede alugou: "));
+    receita[posicao] = Double.parseDouble(JOptionPane.showInputDialog("Informe a receita deste hóspede"));
+
     
    
         
