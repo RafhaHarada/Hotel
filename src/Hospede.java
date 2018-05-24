@@ -95,7 +95,7 @@ public class Hospede {
                 + "\nNº do quarto: " + quartos[posicao]
                 + "\nReceita: " + receita[posicao]);
         
-       }      }
+       }      
 
     public void solicitarInformacao(int posicao) {
     nomes[posicao] = (String) JOptionPane.showInputDialog("Informe o nome do funcionário :");
