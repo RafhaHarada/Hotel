@@ -20,38 +20,38 @@ public class Hotel {
                 "Primeiramente, cadastraremos seu hotel.\nPor favor insira o nome do Hotel",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
-                .trim();
+                .trim();/*
         String endereco = JOptionPane.showInputDialog(null,
-                "Por favor insira o endereço do hotel:",
+                "Por favor insira o endereço do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
                 .trim();
         String telefoneHotel = JOptionPane.showInputDialog(null,
-                "Por favor insira o telefone do hotel:",
+                "Por favor insira o telefone do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
                 .trim();
         String email = JOptionPane.showInputDialog(null,
-                "Por favor insira o email do hotel:",
+                "Por favor insira o email do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE)
                 .trim();
 
         Object[] estrelasAvaliacao = {"Escolha Uma Das Opções Abaixo", "★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"};
         String hotelAvaliacao = JOptionPane.showInputDialog(null,
-                "Por favor coloque a avaliação atual do hotel:",
+                "Por favor coloque a avaliação atual do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 estrelasAvaliacao,
                 estrelasAvaliacao[0])
-                .toString();
+                .toString();*/
         hotelAndares = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Por favor insira a quantidade de andares do hotel:",
+                "Por favor insira a quantidade de andares do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE));
         hotelQuartos = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Por favor insira a quantidade de quartos do hotel:",
+                "Por favor insira a quantidade de quartos do " + hotelNome + ":",
                 "Cadastro do Hotel",
                 JOptionPane.QUESTION_MESSAGE));
         // TODO Estatístic
