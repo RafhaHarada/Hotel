@@ -18,7 +18,6 @@ public class Sistema {
     Hospede hospede = new Hospede();
     Custos custos = new Custos();
     Receita receita = new Receita();
-    int n = 0;
 
     public void apresentarMenu() {
         JOptionPane.showMessageDialog(null, null, "Administration Hotel", JOptionPane.PLAIN_MESSAGE, new ImageIcon(
