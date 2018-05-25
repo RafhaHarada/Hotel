@@ -14,7 +14,7 @@ public class Custos {
     double[] gastosComTelefoneEInternets = new double[12];
     int atual = 0;
     
-    public class menuDosCustos{
+    public class menu{
         private Custos custos = new Custos();
         private int menuGastos(){
         int menuCustos = 

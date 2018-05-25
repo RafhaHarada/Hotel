@@ -9,6 +9,7 @@ public class Receita {
     double[] ganhosComConveniencias = new double[12];
     double[] ganhosComServicosExtras = new double[12];
     double[] ganhosComAlugueis = new double[12];
+    double[] ganhosComEventos = new double[12];
     double[] porcentagensDeCrescimentoMensais = new double[12];
     double[] receitasAnuais = new double[10];
     double[] lucroMensal = new double[12];
@@ -18,7 +19,9 @@ public class Receita {
     public void cadastrar(){
         solicitarInformacao(atual);
         atual++;
+        
     }
+    
     public void editar(){
         int mes = Integer.parseInt(
                 JOptionPane.showInputDialog(
@@ -44,11 +47,32 @@ public class Receita {
                 JOptionPane.showInputDialog(
                     "Informe o número do mês que deseja editar os ganhos com aluguéis"
     ));
+        ganhosComEventos[mes-1] = Double.parseDouble(
+                JOptionPane.showInputDialog(
+                    "Informe o número do mês que deseja editar os ganhos com eventos"
+    ));
+        
     }
+    
     public void listar(){
         
     }
     public void buscarPeloMes(){
+        
+    }
+    public void receitaAnual(){
+        double total = 0;
+        for(int i = 0; i < ganhosComQuartos.length; i++){
+            for(int j = 0; j < ganhosComComidaEBebidas.length; j++)
+                for(int k = 0; k < ganhosComConveniencias.length; k++)
+                    for(int l = 0; l < ganhosComServicosExtras.length; l++)
+                        for(int m = 0; m < ganhosComAlugueis.length; m++)
+                            for(int n = 0; n < ganhosComEventos.length; n++)
+            total += ganhosComQuartos[i] + ganhosComComidaEBebidas[j] 
+                    + ganhosComConveniencias[k] + ganhosComServicosExtras[l] 
+                    + ganhosComAlugueis[m] + ganhosComEventos[n];
+        }
+        JOptionPane.showMessageDialog(null, "A receita anual é de: R$" + total );
         
     }
     public void crescimentoELucroMensal(){
@@ -96,6 +120,12 @@ public class Receita {
                 .replace(" ", "").replace("R$", "")
                 .replace(".", "").replace(",", ".")
         );
-        
+        ganhosComEventos[posicao] = Double.parseDouble(
+        JOptionPane.showInputDialog(
+                "Informe o total ganho com aluguéis",
+                ganhosComEventos[posicao] != 0 ? ganhosComEventos[posicao] : 0)
+                .replace(" ", "").replace("R$", "")
+                .replace(".", "").replace(",", ".")
+        );
     }
 }
