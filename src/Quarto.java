@@ -44,7 +44,6 @@ public class Quarto {
              preco = new double[Hotel.hotelQuartos];
              andares = new Object[Hotel.hotelAndares];
         }
-
         int menuQuarto = JOptionPane.showOptionDialog(null,
                 "Cadastrar Quarto - Cadastrar um novo quarto.\n"
                 + "Cadastrados - Listar os quartos cadastrados e status atualmente.\n"
@@ -128,6 +127,10 @@ public class Quarto {
                         + "\nInsira o preço a ser cobrado das camas " + camas[i].toString(),
                         "Valor por Camas",
                         JOptionPane.QUESTION_MESSAGE));
+                
+            }
+            for (int i = 0; i < numero.length; i++) {
+                numero[i] = 0;
             }
         }
         if (adicionador == Hotel.hotelQuartos) {
@@ -140,12 +143,21 @@ public class Quarto {
 
     public void buscarQuarto() {
         String texto = "";
+        int contador = 0;
         if (adicionador != 0) {
-            int busca = Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha o quarto a ser editado.", "Editar", JOptionPane.QUESTION_MESSAGE));
+            int busca = Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha o quarto a ser buscado.", "Editar", JOptionPane.QUESTION_MESSAGE));
+            while(busca <= 0 || busca > adicionador){
+                JOptionPane.showMessageDialog(null, "O número inserido não é válido", "Ops...", JOptionPane.WARNING_MESSAGE);
+                busca = Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha novamente o quarto a ser buscado.", "Editar", JOptionPane.QUESTION_MESSAGE));
+            }
             for (int i = 0; i < numero.length; i++) {
                 if (numero[i] == busca) {
-                    solicitacaoQuarto(i);
+                    infoQuarto(busca-1);
+                    contador++;
                 }
+            }
+            if(contador == 0){
+                JOptionPane.showMessageDialog(null, "O quarto inserido não foi cadastrado", "Ops...", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
@@ -173,9 +185,8 @@ public class Quarto {
         if (adicionador != 0) {
             String texto = "";
             for (int i = 0; i < numero.length; i++) {
-
+                if(numero[i] != 0)
                 texto += "Quarto nº" + numero[i] + "\n";
-
             }
             JOptionPane.showMessageDialog(null, "Os quartos cadastrados são:\n" + texto, "Quartos Cadastrados", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -187,12 +198,11 @@ public class Quarto {
     public void naoCadastradosQuarto() {
         if (adicionador != 0) {
             String texto = "";
-            for (int i = 1; i <= numero.length; i++) {
-                for (int j = 0; j < numero.length; j++) {
-                    if (i != numero[j]) {
-                        texto += "Quarto nº" + i + "\n";
-                    }
+            for (int i = 1; i < numero.length; i++) {
+                if (numero[i] == 0) {
+                    texto += "Quarto nº" + i + "\n";
                 }
+                
             }
             JOptionPane.showMessageDialog(null, "Os quartos não cadastrados são:\n" + texto, "Quartos Não Cadastrados", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -201,10 +211,11 @@ public class Quarto {
     }
 
     public void solicitacaoQuarto(int posicao) {
+        int erro = 0;
         tamanho[posicao] = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite o tamanho do Quarto:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
-        while (tamanho[adicionador] <= 8) {
+        while (tamanho[posicao] <= 8) {
             JOptionPane.showMessageDialog(null, "Insira um tamanho maior que 8m²", "Ops...", JOptionPane.WARNING_MESSAGE);
-            tamanho[adicionador] = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite novamente o tamanho do Quarto:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE).replace(",", "."));
+            tamanho[posicao] = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite novamente o tamanho do Quarto:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE).replace(",", "."));
         }
         quartoTipo[posicao] = JOptionPane.showOptionDialog(null,
                 "Tipos de Quartos:\n"
@@ -263,22 +274,27 @@ public class Quarto {
         }
         preco[posicao] *= precoCama[quartoCamas[posicao]];
         numero[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Quarto", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
-        while (numero[posicao] <= 0 || numero[posicao] > quartosMAX.length) {
-            int count = 0;
-            int anterior = count;
+        for (int i = 0; i < numero.length; i++) {
+                if (numero[posicao] == numero[i] && posicao != i) {
+                    erro = 1;
+                    break;
+                }
+            }
+        while (numero[posicao] <= 0 || numero[posicao] > quartosMAX.length || erro == 1) {
+            int contador = erro;
             for (int i = 0; i < numero.length; i++) {
                 if (numero[posicao] == numero[i]) {
-                    JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
-                    numero[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite novamente o número do Quarto", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
-                    count++;
+                    JOptionPane.showMessageDialog(null, "Este quarto já está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
+                    numero[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite novamente outro número do Quarto", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
+                    contador++;
                 }
             }
             if (numero[posicao] <= 0 || numero[posicao] > quartosMAX.length) {
                 JOptionPane.showMessageDialog(null, "O número inserido não é válido.\nInsira um número entre 1 e " + Hotel.hotelQuartos + ".", "Ops...", JOptionPane.WARNING_MESSAGE);
                 numero[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite novamente o número do Quarto", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
-                count++;
+                contador++;
             }
-            if (count == anterior) {
+            if (contador == erro) {
                 break;
             }
         }
@@ -303,40 +319,40 @@ public class Quarto {
 
     }
 
-    private void infoQuarto() {
+    public void infoQuarto(int posicao) {
         if (adicionador != 0) {
             Object auxiliar[] = new Object[adicionador];
             for (int i = 0; i < adicionador; i++) {
                 auxiliar[i] = numero[i];
             }
-            String escolha = JOptionPane.showInputDialog(null, "Escolha o quarto a ser editado.", "Editar", JOptionPane.QUESTION_MESSAGE, null, auxiliar, auxiliar[0]).toString();
-            for (int i = 0; i < numero.length; i++) {
-                if (escolha.equals(Hospede.quartos[i])) {
-                    if (Hospede.status[i] == 1) {
+            
+            Hospede hospede = new Hospede();
+            hospede.atualizacaoHospede();
+            
+                    if (Hospede.status[posicao] == 1) {
                         JOptionPane.showMessageDialog(null,
                                 "\nStatus: Ocupado"
-                                + "\nNome do Hospede: " + Hospede.nomes[i]
-                                + "\nNúmero do quarto: " + Hospede.quartos[i]
-                                + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
-                                + " para " + camas[quartoCamas[i]]
-                                + "Andar: " + andares[i]
-                                + "\nDesocupação:" + Hospede.checkout[i],
-                                "Informações do Quarto" + escolha.toString(),
+                                + "\nNome do Hospede: " + Hospede.nomes[posicao]
+                                + "\nNúmero do quarto: " + Hospede.quartos[posicao]
+                                + "\nTipo do Quarto: " + tipo[quartoTipo[posicao]]
+                                + " para " + camas[quartoCamas[posicao]]
+                                + "Andar: " + andares[posicao]
+                                + "\nDesocupação:" + Hospede.checkout[posicao],
+                                "Informações do Quarto" + (posicao),
                                 JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null,
                                 "\nStatus: Desocupado"
-                                + "\nNúmero do quarto: " + Hospede.quartos[i]
-                                + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
-                                + " para " + camas[quartoCamas[i]]
-                                + "Andar: " + andares[i]
-                                + "\nPreço: R$" + String.format("%.2f", preco[i]),
-                                "Informações do Quarto" + escolha.toString(),
+                                + "\nNúmero do quarto: " + numero[posicao]
+                                + "\nTipo do Quarto: " + tipo[quartoTipo[posicao]]
+                                + " para " + camas[quartoCamas[posicao]]
+                                + "\nAndar: " + andares[posicao]
+                                + "\nPreço: R$" + String.format("%.2f", preco[posicao]),
+                                "Informações do Quarto" + (posicao),
                                 JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
-            }
-        } else {
+        else {
             JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.\nCadastre um quarto para editar.", "Ops...", JOptionPane.WARNING_MESSAGE);
         }
 
