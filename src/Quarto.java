@@ -1,3 +1,4 @@
+
 import javax.swing.JOptionPane;
 
 /*
@@ -11,25 +12,39 @@ import javax.swing.JOptionPane;
  */
 public class Quarto {
 
-    String quartosMAX[] = new String[Hotel.hotelQuartos];
-    String quartoAvaliacao[] = new String[Hotel.hotelQuartos];
-    String hospede[] = new String[Hotel.hotelQuartos];
-    int quartoAndar[] = new int[Hotel.hotelAndares];
-    int numero[] = new int[Hotel.hotelQuartos];
-    int quartoTipo[] = new int[Hotel.hotelQuartos];
+    String quartosMAX[] = new String[0];
+    String quartoAvaliacao[] = new String[0];
+    String hospede[] = new String[0];
+    int quartoAndar[] = new int[0];
+    int numero[] = new int[0];
+    int quartoTipo[] = new int[0];
     int precoTipo[] = new int[4];
-    int quartoCamas[] = new int[Hotel.hotelQuartos];
+    int quartoCamas[] = new int[0];
     double precoCama[] = new double[4];
-    double tamanho[] = new double[Hotel.hotelQuartos];
-    double preco[] = new double[Hotel.hotelQuartos];
+    double tamanho[] = new double[0];
+    double preco[] = new double[0];
     Object[] options = {"Cadastrar Quarto", "Cadastrados", "Não Cadastrados", "Buscar Quarto", "Editar Quarto", "Voltar"};
     Object[] camas = {"SOLTEIRO", "CASAL", "DUPLO SOLTEIRO", "FAMILIA"};
     Object[] tipo = {"STANDARD", "SUITE", "EXECUTIVO", "DELUXE"};
     Object[] estrelasAvaliacao = {"Escolha Uma Das Opções Abaixo", "★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"};
-    Object[] andares = new Object[Hotel.hotelAndares];
+    Object[] andares = new Object[0];
     static int adicionador = 0;
 
     public void menu() {
+
+        if (tamanho.length == 0) {
+             quartosMAX = new String[Hotel.hotelQuartos];
+             quartoAvaliacao = new String[Hotel.hotelQuartos];
+             hospede = new String[Hotel.hotelQuartos];
+             quartoAndar = new int[Hotel.hotelAndares];
+             numero = new int[Hotel.hotelQuartos];
+             quartoTipo = new int[Hotel.hotelQuartos];
+             quartoCamas = new int[Hotel.hotelQuartos];
+             tamanho = new double[Hotel.hotelQuartos];
+             preco = new double[Hotel.hotelQuartos];
+             andares = new Object[Hotel.hotelAndares];
+        }
+
         int menuQuarto = JOptionPane.showOptionDialog(null,
                 "Cadastrar Quarto - Cadastrar um novo quarto.\n"
                 + "Cadastrados - Listar os quartos cadastrados e status atualmente.\n"
@@ -156,16 +171,16 @@ public class Quarto {
 
     public void cadastradosQuarto() {
         if (adicionador != 0) {
-        String texto = "";
-        for (int i = 0; i < numero.length; i++) {
-            
+            String texto = "";
+            for (int i = 0; i < numero.length; i++) {
+
                 texto += "Quarto nº" + numero[i] + "\n";
-            
-        }
-        JOptionPane.showMessageDialog(null, "Os quartos cadastrados são:\n" + texto, "Quartos Cadastrados", JOptionPane.WARNING_MESSAGE);
-        } else {
-                JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
+
             }
+            JOptionPane.showMessageDialog(null, "Os quartos cadastrados são:\n" + texto, "Quartos Cadastrados", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum quarto está cadastrado.", "Ops...", JOptionPane.WARNING_MESSAGE);
+        }
 
     }
 
@@ -191,34 +206,34 @@ public class Quarto {
             JOptionPane.showMessageDialog(null, "Insira um tamanho maior que 8m²", "Ops...", JOptionPane.WARNING_MESSAGE);
             tamanho[adicionador] = Double.parseDouble(JOptionPane.showInputDialog(null, "Digite novamente o tamanho do Quarto:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE).replace(",", "."));
         }
-        quartoTipo[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
+        quartoTipo[posicao] = JOptionPane.showOptionDialog(null,
                 "Tipos de Quartos:\n"
                 + "\n-STANDARD: Quarto com mobilia comum e serviços básicos "
                 + "\n-SUITE: Standard com banheiro e maior qualidade de mobilia e serviços"
                 + "\n-EXECUTIVO: Suite com sala e maior qualidade de mobilia e serviços"
                 + "\n-DELUXE: Executivo com cozinha e maior qualidade de mobilia e serviços",
                 "Cadastro do Quarto",
+                0,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 tipo,
-                tipo[0])
-                .toString());
-            while (posicao > 3 && posicao < 0) {
-                quartoTipo[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
+                tipo[0]);
+        while (posicao > 3 && posicao < 0) {
+            quartoTipo[posicao] = JOptionPane.showOptionDialog(null,
                 "Tipos de Quartos:\n"
                 + "\n-STANDARD: Quarto com mobilia comum e serviços básicos "
                 + "\n-SUITE: Standard com banheiro e maior qualidade de mobilia e serviços"
                 + "\n-EXECUTIVO: Suite com sala e maior qualidade de mobilia e serviços"
                 + "\n-DELUXE: Executivo com cozinha e maior qualidade de mobilia e serviços",
                 "Cadastro do Quarto",
+                0,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 tipo,
-                tipo[0])
-                .toString());
-            }
-            preco[posicao] = precoTipo[quartoTipo[posicao]];
-        quartoCamas[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
+                tipo[0]);
+        }
+        preco[posicao] = precoTipo[quartoTipo[posicao]];
+        quartoCamas[posicao] = JOptionPane.showOptionDialog(null,
                 "Classifique o quarto por pessoa:"
                 + "\nOBS:Classificação por pessoa de Quartos:\n"
                 + "\n-SOLTEIRO: Quarto com uma cama de solteiro"
@@ -226,27 +241,27 @@ public class Quarto {
                 + "\n-DUPLO SOLTEIRO: Quarto com duas camas de solteiros"
                 + "\n-FAMILIA: Quarto com uma camas de casal e uma beliche para dois\n",
                 "Cadastro do Quarto",
+                0,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 camas,
-                camas[0]).toString());
-
-        preco[posicao] *= precoCama[quartoCamas[posicao]];
-
+                camas[0]);
         while (posicao > 3 && posicao < 0) {
-            quartoCamas[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null,
-                    "Classifique o quarto por pessoa:"
-                    + "\nOBS:Classificação por pessoa de Quartos:\n"
-                    + "\n-SOLTEIRO: Quarto com uma cama de solteiro"
-                    + "\n-CASAL: Quarto com uma cama de casal"
-                    + "\n-DUPLO SOLTEIRO: Quarto com duas camas de solteiros"
-                    + "\n-FAMILIA: Quarto com uma camas de casal e uma beliche para dois\n",
-                    "Cadastro do Quarto",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    camas,
-                    camas[0]).toString());
+            quartoCamas[posicao] = JOptionPane.showOptionDialog(null,
+                "Classifique o quarto por pessoa:"
+                + "\nOBS:Classificação por pessoa de Quartos:\n"
+                + "\n-SOLTEIRO: Quarto com uma cama de solteiro"
+                + "\n-CASAL: Quarto com uma cama de casal"
+                + "\n-DUPLO SOLTEIRO: Quarto com duas camas de solteiros"
+                + "\n-FAMILIA: Quarto com uma camas de casal e uma beliche para dois\n",
+                "Cadastro do Quarto",
+                0,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                camas,
+                camas[0]);
         }
+        preco[posicao] *= precoCama[quartoCamas[posicao]];
         numero[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Quarto", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
         while (numero[posicao] <= 0 || numero[posicao] > quartosMAX.length) {
             int count = 0;
@@ -277,10 +292,10 @@ public class Quarto {
                 .toString();
 
         for (int i = 0; i < andares.length; i++) {
-            andares[i] = (i + 1) + "º Andar";
+            andares[i] = (i+1) + "º Andar";
 
         }
-        quartoAndar[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o andar em que o quarto está:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE, null, andares, andares[0]).toString());
+        quartoAndar[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o andar em que o quarto está:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE, null, andares, andares[0]).toString().replace("º Andar", ""))-1;
         while (quartoAndar[posicao] < 0 || quartoAndar[posicao] > Hotel.hotelAndares) {
             JOptionPane.showMessageDialog(null, "O número inserido não é válido.\nInsira um número entre 1 e " + Hotel.hotelAndares + ".", "Ops...", JOptionPane.WARNING_MESSAGE);
             quartoAndar[posicao] = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite novamente o andar em que o quarto está:", "Cadastro Quarto", JOptionPane.QUESTION_MESSAGE));
@@ -304,7 +319,7 @@ public class Quarto {
                                 + "\nNúmero do quarto: " + Hospede.quartos[i]
                                 + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
                                 + " para " + camas[quartoCamas[i]]
-                                        + "Andar: " + andares[i]
+                                + "Andar: " + andares[i]
                                 + "\nDesocupação:" + Hospede.checkout[i],
                                 "Informações do Quarto" + escolha.toString(),
                                 JOptionPane.INFORMATION_MESSAGE);
@@ -314,8 +329,8 @@ public class Quarto {
                                 + "\nNúmero do quarto: " + Hospede.quartos[i]
                                 + "\nTipo do Quarto: " + tipo[quartoTipo[i]]
                                 + " para " + camas[quartoCamas[i]]
-                                        + "Andar: " + andares[i]
-                                + "\nPreço: R$" + String.format("%.2f",preco[i]),
+                                + "Andar: " + andares[i]
+                                + "\nPreço: R$" + String.format("%.2f", preco[i]),
                                 "Informações do Quarto" + escolha.toString(),
                                 JOptionPane.INFORMATION_MESSAGE);
                     }

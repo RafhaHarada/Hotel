@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -5,18 +6,52 @@ import javax.swing.JOptionPane;
  */
 public class Custos {
 
-    double[] aguaCustos = new double[12];
-    double[] energiaCustos = new double[12];
-    double[] gastosComMantimentos = new double[12];
-    double[] gastosComManutencoes = new double[12];
-    double[] gastosComFuncionarios = new double[12];
-    double[] gastosComLimpezas = new double[12];
-    double[] gastosComTelefoneEInternets = new double[12];
+    static double[] aguaCustos = new double[12];
+    static double[] energiaCustos = new double[12];
+    static double[] gastosComMantimentos = new double[12];
+    static double[] gastosComManutencoes = new double[12];
+    static double[] gastosComFuncionarios = new double[12];
+    static double[] gastosComLimpezas = new double[12];
+    static double[] gastosComTelefoneEInternets = new double[12];
     int atual = 0;
     
-    public class menuDosCustos{
-        private Custos custos = new Custos();
-        private int menuGastos(){
+    public void menu(){
+    Object[] options = {"Cadastrar", "Editar", "Listar", "Buscar pelo mês", "Voltar"};
+        int menu = 0;
+
+        while (menu != 5) {
+            menu = JOptionPane.showOptionDialog(
+                    null,
+                    "Tabela de custos"
+                    + "Selecione uma das opções abaixo:",
+                    "Administração de Custos",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]
+            );
+            switch (menu) {
+                case 0:
+                    cadastrar();
+                    break;
+                case 1:
+                    editar();
+                    break;
+                case 2:
+                    listar();
+                    break;
+                case 3:
+                    buscarPeloMes();
+                    break;
+                case 4:
+                    return;
+                default:
+                    return;
+            }}}
+    /*public void menu(){
+         Custos custos = new Custos();
+         int menuGastos(){
         int menuCustos = 
             JOptionPane.showOptionDialog(null, "MENU DOS CUSTOS", "CustosHotel", 0, 0, 
             null, new Object[]{
@@ -44,20 +79,19 @@ public class Custos {
             menuCustos = menuGastos();
         }
     
-    }
+    }*/
 
     public void cadastrar() {
        solicitarInformacao(atual);
        atual++;
     }
-    
     public void editar(){
         int mes = Integer.parseInt(
             JOptionPane.showInputDialog(
                 "Digite o número equivalente ao mês que deseja editar." 
                 + "\nExemplo: Se quiser editar os custos do mês de Janeiro, digite 1"
         ));
-        
+        solicitarInformacao(mes);
         aguaCustos[mes-1] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Digite o número equivalente ao mês que deseja editar os gastos com Água." 
@@ -104,7 +138,7 @@ public class Custos {
     }
     public void listar(){
         String texto = "";
-        for(int i =0; i < atual; i++){
+        for(int i = 0; i < atual; i++){
             texto+= "Água: " + aguaCustos[i]
                 + "\nEnergia: " + energiaCustos[i]
                 + "\nMantimentos: " + gastosComMantimentos[i] 
@@ -190,6 +224,6 @@ public class Custos {
                 .replace(".", "").replace(",", ".")
         );
         
-        }
+        
     }
 }
