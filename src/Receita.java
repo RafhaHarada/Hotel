@@ -23,9 +23,9 @@ public class Receita {
         while (menu != 8) {
             menu = JOptionPane.showOptionDialog(
                     null,
-                    "Tabela de custos"
+                    "Tabela de receitas"
                     + "Selecione uma das opções abaixo:",
-                    "Administração de Custos",
+                    "Administração das Receitas",
                     0,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
