@@ -56,10 +56,9 @@ public class Sistema {
                     break;
                 case 3:
                      custos.menu();
-
                     break;
-                case 4:/*
-                     receita.menu();*/
+                case 4:
+                     receita.menu();
 
                     break;
                 default:
