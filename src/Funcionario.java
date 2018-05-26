@@ -137,32 +137,13 @@ public class Funcionario {
      *
      * @param posicao
      */
-        public void numeroCadastros(){
-        int numCadastros = Integer.parseInt(JOptionPane.showInputDialog(
-                "Infrome o número de funcionários que deseje cadastrar : "));
-        int cadastros = 0;
-        while (numCadastros <0){
-            int posicao = 0;
-            nomes[posicao] = JOptionPane.showInputDialog(
-                "Digite o nome do funcionário :");
-        idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Informe o sexo deste funcionário : "));
-        sexos[posicao] = JOptionPane.showInputDialog(
-                nomes[posicao] + " digite o seu sexo").charAt(0);
-        cargos[posicao] = JOptionPane.showInputDialog(
-                "Digite o cargo que este funcionário exerce :");
-        cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a carga horária deste funcionário :"));
-        salarios[atual] = Double.parseDouble(JOptionPane.showInputDialog(
-                "Digite o salário deste funcionário :"));
-        desempenhos[atual] = JOptionPane.showInputDialog(
-                "Descreva o desemepenho deste funcionário :");
-          
-        }
-        
-        }
         
         public void solicitarInformacao(int posicao) {
+        int numCadastros = Integer.parseInt(JOptionPane.showInputDialog(
+            "Infrome o número de funcionários que deseje cadastrar : "));
+        int cadastros = 0;
+        while (numCadastros <0){
+        int posicao = 0;
         nomes[posicao] = JOptionPane.showInputDialog(
                 "Digite o nome do funcionário :");
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
