@@ -41,21 +41,16 @@ public class Hospede {
         atual++;
     }
 
-    Object[] options = {"Cadastrar Hóspedes", "Editar Hóspedes", "Listar Hospedes", "Pesquisar por nome", "Pesquisar por Check-in", "Sair"};
-        int menu = 0;
-
-        while (menu != 5) {
-            menu = JOptionPane.showOptionDialog(
-                    null,
-                    "Administração de Hóspedes\n\n"
-                    + "Selecione uma das opções abaixo:",
-                    "Administração de Hópedes",
-                    0,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[5]
-            );
+    public void menu() {
+        int menuHospedes = Integer.parseInt(
+                JOptionPane.showInputDialog(
+                        "1 - Cadastrar hóspedes"
+                        + "\n2 - Editar hóspedes"
+                        + "\n3 - Listar hóspedes"
+                        + "\n4 - Pesquisar por nome"
+                        + "\n5 - Pesquisar por check-in"
+                        + "\n6 - Pesquisar por check-out"
+                        + "\n7 - Finalizar"));
 
         while (menuHospedes != 7) {
             switch (menuHospedes) {
@@ -97,7 +92,7 @@ public class Hospede {
     }
 
     public void Listar() {
-        String texto = "";        
+        String texto = "";
         for (int i = 0; i < atual; i++) {
             texto += "Nome : "             + nomes[i]
                     + "\nIdade : "         + idades[i]
@@ -144,7 +139,6 @@ public class Hospede {
 
     }
 
-
     public void apresentarInformacao(int posicao) {
         JOptionPane.showMessageDialog(null,
                 "Nome: "                   + nomes[posicao]
@@ -156,32 +150,23 @@ public class Hospede {
                 + "\nReceita: "            + receita[posicao]);
 
     }
-        
-        public void solicitarInformacao(int posicao) {
-        int numcadastros = Integer.parseInt(JOptionPane.showInputDialog(
-            "Informe o número de hóspedes que deseja cadastrar :"));
-        for (int i = 0; i < numCadastros.length; i++){
-        nomes[posicao] = JOptionPane.showInputDialog(
+
+    public void solicitarInformacao(int posicao) {
+        nomes[posicao] = (String) JOptionPane.showInputDialog(
                 "Informe o nome do funcionário :");
-        idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a idade deste funcionário : "));
-        sexos[posicao] = JOptionPane.showInputDialog(
-                " Digite o sexo deste hóspede :").charAt(0);
+        idades[posicao] = Integer.parseInt((String) JOptionPane.showInputDialog(
+                "Digite a idade deste funcionário: "));
         checkin[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a data de check-in deste hóspede :"));
+                "Digite a data de check-in deste hóspede: "));
         checkout[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a data de check-out deste hóspede :"));
+                "Digite a data de check-out deste hóspede: "));
         quartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "informe o quarto em que este hóspede alugou :"));
+                "informe o quarto em que este hóspede alugou: "));
         receita[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
-                "Informe a receita deste hóspede :"));
+                "Informe a receita deste hóspede"));
 
         status[posicao] = 1;
 
-        
     }
 
-   }
-
 }
-
