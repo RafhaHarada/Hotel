@@ -143,7 +143,6 @@ public class Funcionario {
             "Infrome o número de funcionários que deseje cadastrar : "));
         int cadastros = 0;
         while (numCadastros <0){
-        int posicao = 0;
         nomes[posicao] = JOptionPane.showInputDialog(
                 "Digite o nome do funcionário :");
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
@@ -170,7 +169,9 @@ public class Funcionario {
             }
             if (salarios[posicao] > maiorSalario) {
                 maiorSalario = salarios[posicao];
+                }
             }
+
         }
 
     }
