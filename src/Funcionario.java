@@ -33,35 +33,16 @@ public class Funcionario {
         atual++;
     }
 
-    nt atual = 0;
-    private int menuFuncionarios;
-
-    public void Cadastrar() {
-        if (atual == 0) {
-            for (int i = 0; i < status.length; i++) {
-                status[i] = 0;
-            }
-        }
-        solicitarInformacao(atual);
-        atual++;
-    }
-
-    public void menu() {
-        Object[] options = {"Cadastrar Funcionários", "Editar Funcionários", "Listar Funcionários", "Pesquisar pelo nome", "Pesquisar pelo cargo", "Finalizar"};
-            int menu = 0;
-    
-            while (menu != 7) {
-                menu = JOptionPane.showOptionDialog(
-                        null,
-                        "Administração Hoteleira\n\n"
-                        + "Selecione uma das opções abaixo:",
-                        "Administração da Biblioteca de Funcionários",
-                        0,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        options,
-                        options[6]
-                );
+    public void menuFuncionarios() {
+        int menuFuncionarios = Integer.parseInt(
+                JOptionPane.showInputDialog(null,
+                        "1 - Cadastrar funcionários"
+                        + "\n2 - Editar funcionários"
+                        + "\n3 - Listar funcionários"
+                        + "\n4 - Pesquisar pelo nome"
+                        + "\n5 - Pesquisar pelo cargo"
+                        + "\n6 - Finalizar", "",
+                        JOptionPane.QUESTION_MESSAGE));
 
         while (menuFuncionarios != 6) {
             switch (menuFuncionarios) {
@@ -84,7 +65,16 @@ public class Funcionario {
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
             }
-          }
+            menuFuncionarios = Integer.parseInt(
+                    JOptionPane.showInputDialog(null,
+                            "1 - Cadastrar funcionários"
+                            + "\n2 - Editar funcionários"
+                            + "\n3 - Listar funcionários"
+                            + "\n4 - Pesquisar pelo nome"
+                            + "\n5 - Pesquisar pelo cargo"
+                            + "\n6 - Finalizar", "",
+                            JOptionPane.QUESTION_MESSAGE));
+            ;
         }
     }
 
@@ -179,7 +169,7 @@ public class Funcionario {
             }
             if (salarios[posicao] > maiorSalario) {
                 maiorSalario = salarios[posicao];
-                }
+              }
             }
 
         }
