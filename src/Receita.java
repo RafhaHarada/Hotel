@@ -11,10 +11,54 @@ public class Receita {
     double[] ganhosComAlugueis = new double[12];
     double[] ganhosComEventos = new double[12];
     double[] porcentagensDeCrescimentoMensais = new double[12];
-    double[] receitasAnuais = new double[5];
+    double[] receitasAnuais = new double[10];
     double[] lucrosMensais = new double[12];
-    double[] lucrosAnuais = new double[5];
+    double[] lucrosAnuais = new double[10];
     int atual = 0;
+    
+    public void menu(){
+    Object[] options = {"Cadastrar", "Editar", "Listar", "Buscar pelo mês", "Receita Anual", "Lucro Mensal", "Lucro Anual", "Voltar"};
+        int menu = 0;
+
+        while (menu != 8) {
+            menu = JOptionPane.showOptionDialog(
+                    null,
+                    "Tabela de receitas"
+                    + "Selecione uma das opções abaixo:",
+                    "Administração das Receitas",
+                    0,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]
+            );
+            switch (menu) {
+                case 0:
+                    cadastrar();
+                    break;
+                case 1:
+                    editar();
+                    break;
+                case 2:
+                    listar();
+                    break;
+                case 3:
+                    buscarPeloMes();
+                    break;
+                case 4:
+                    receitaAnual();
+                    break;
+                case 5:
+                    lucroECrescimentoMensal();
+                    break;
+                case 6:
+                    lucroAnual();
+                    break;
+                case 7:
+                    return;
+                default:
+                    return;
+            }}}
     
     public void cadastrar(){
         solicitarInformacao(atual);
@@ -78,6 +122,7 @@ public class Receita {
             total += ganhosComQuartos[i] + ganhosComComidaEBebidas[i] 
                     + ganhosComConveniencias[i] + ganhosComServicosExtras[i] 
                     + ganhosComAlugueis[i] + ganhosComEventos[i];
+            receitasAnuais[i] = total; 
         }
                 JOptionPane.showMessageDialog(null, "A receita anual é de: R$" + total);
         
@@ -94,6 +139,7 @@ public class Receita {
                     - Custos.gastosComMantimentos[mes-1] - Custos.gastosComManutencoes[mes-1]
                     - Custos.gastosComFuncionarios[mes-1] - Custos.gastosComLimpezas[mes-1]
                     - Custos.gastosComTelefoneEInternets[mes-1];
+            lucrosMensais[mes-1] = lucroMes;
             
         JOptionPane.showMessageDialog(null, "O lucro do mês foi de: R$" + lucroMes);
     }
@@ -109,6 +155,7 @@ public class Receita {
                     - Custos.gastosComMantimentos[i] - Custos.gastosComManutencoes[i] 
                     - Custos.gastosComFuncionarios[i] - Custos.gastosComLimpezas[i] 
                     - Custos.gastosComTelefoneEInternets[i];
+            lucrosAnuais[i] = lucro;
         }
         JOptionPane.showMessageDialog(null, "O lucro anual é de: R$" + lucro);
         
