@@ -169,7 +169,7 @@ public class Funcionario {
             }
             if (salarios[posicao] > maiorSalario) {
                 maiorSalario = salarios[posicao];
-              }
+               }
             }
 
         }
