@@ -19,14 +19,14 @@ public class Hospede {
     //TODO Quarto
     //TODO Receita Cliente
 
-    static String[] nomes = new String[Hotel.hotelQuartos];
-    int[] idades = new int[Hotel.hotelQuartos];
-    char[] sexos = new char[Hotel.hotelQuartos];
-    int[] checkin = new int[Hotel.hotelQuartos];
-    static int[] checkout = new int[Hotel.hotelQuartos];
-    static int[] quartos = new int[Hotel.hotelQuartos];
-    static int[] status = new int[Hotel.hotelQuartos];
-    double[] receita = new double[Hotel.hotelQuartos];
+    static String[] nomes = new String[0];
+    int[] idades = new int[0];
+    char[] sexos = new char[0];
+    int[] checkin = new int[0];
+    static int[] checkout = new int[0];
+    static int[] quartos = new int[0];
+    static int[] status = new int[0];
+    double[] receita = new double[0];
 
     int atual = 0;
     private int menuHospedes;
@@ -42,41 +42,63 @@ public class Hospede {
     }
 
     public void menu() {
-        int menuHospedes = Integer.parseInt(
-                JOptionPane.showInputDialog(
-                        "1 - Cadastrar hóspedes"
-                        + "\n2 - Editar hóspedes"
-                        + "\n3 - Listar hóspedes"
-                        + "\n4 - Pesquisar por nome"
-                        + "\n5 - Pesquisar por check-in"
-                        + "\n6 - Pesquisar por check-out"
-                        + "\n7 - Finalizar"));
-
-        while (menuHospedes != 7) {
-            switch (menuHospedes) {
-                case 1:
-                    Cadastrar();
-                    break;
-                case 2:
-                    Editar();
-                    break;
-                case 3:
-                    Listar();
-                    break;
-                case 4:
-                    PesquisarPorNome();
-                    break;
-                case 5:
-                    PesquisarPorCheckIn();
-                    break;
-                case 6:
-                    PesquisarPorCheckOut();
-                    break;
-                case 7:
-                    return;
-
-                default:
-                    JOptionPane.showMessageDialog(null, "Opção inválida");
+        Object[] options = {"Cadastrar Hóspedes", "Editar Hóspedes", "Listar Hóspedes", "Pesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Finalizar"};
+            int menu = 0;
+    
+            while (menu != 7) {
+                menu = JOptionPane.showOptionDialog(
+                        null,
+                        "Administração Hoteleira\n\n"
+                        + "Selecione uma das opções abaixo:",
+                        "Administração da Biblioteca de Hóspedes",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[7]
+                );
+    
+            while (menuHospedes != 7) {
+                switch (menuHospedes) {
+                    case 1:
+                        Cadastrar();
+                        break;
+                    case 2:
+                        Editar();
+                        break;
+                    case 3:
+                        Listar();
+                        break;
+                    case 4:
+                        PesquisarPorNome();
+                        break;
+                    case 5:
+                        PesquisarPorCheckIn();
+                        break;
+                    case 6:
+                        PesquisarPorCheckOut();
+                        break;
+                    case 7:
+                        return;
+    
+                    default:
+                        JOptionPane.showMessageDialog(null, "Opção inválida");
+                }
+            }
+        }
+    }
+        public void atualizacaoHospede(){
+            nomes = new String[Hotel.hotelQuartos];
+            idades = new int[Hotel.hotelQuartos];
+            sexos = new char[Hotel.hotelQuartos];
+            checkin = new int[Hotel.hotelQuartos];
+            checkout = new int[Hotel.hotelQuartos];
+            quartos = new int[Hotel.hotelQuartos];
+            status = new int[Hotel.hotelQuartos];
+            receita = new double[Hotel.hotelQuartos];
+        if ( atual == 0){
+            for (int i = 0; i < status.length; i++){
+                status [i] = 0;
             }
         }
     }
