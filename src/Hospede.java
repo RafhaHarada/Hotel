@@ -180,7 +180,7 @@ public class Hospede {
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Digite a idade deste hóspede: "));
         sexos[posicao] = JOptionPane.showInputDialog(
-                    "Digite o sexo deste hóspede :").charAt(0);
+                "Digite o sexo deste hóspede :").charAt(0);
         checkin[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-in deste hóspede: "
                 +"\n"

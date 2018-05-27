@@ -148,7 +148,7 @@ public class Funcionario {
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Informe a idade deste funcionário :"));
         sexos[posicao] = JOptionPane.showInputDialog(
-                "Iigite o sexo deste funcionário :").charAt(0);
+                "Digite o sexo deste funcionário :").charAt(0);
         cargos[posicao] = JOptionPane.showInputDialog(
                 "Digite o cargo que este funcionário exerce :");
         cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
