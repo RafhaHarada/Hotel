@@ -24,7 +24,7 @@ public class Funcionario {
     char[] sexos = new char[1000];
     String[] cargos = new String[1000];
     int[] cargasHorarias = new int[1000];
-    double[] salarios = new double[1000];
+    String[] salarios = new String[1000];
     String[] desempenhos = new String[1000];
     
     int atual = 0;
@@ -36,7 +36,7 @@ public class Funcionario {
     }
 
     public void menu() {
-        int menuFuncionarios = Integer.parseInt(
+        int menu = Integer.parseInt(
                 JOptionPane.showInputDialog(null,
                           "Digite o número referente a tarefa que deseje executar:"
                         + "\n"
@@ -55,33 +55,33 @@ public class Funcionario {
                         + "\n7 - Finalizar", "",
                         JOptionPane.QUESTION_MESSAGE));
 
-        while (menuFuncionarios != 7) {
-            switch (menuFuncionarios) {
-                case 1:
+        while (menu != 7) {
+            switch (menu) {
+                case 0:
                     cadastrar();
                     break;
-                case 2:
+                case 1:
                     Editar();
                     break;
-                case 3:
+                case 2:
                     Listar();
                     break;
-                case 4:
+                case 3:
                     PesquisarPeloNome();
                     break;
-                case 5:
+                case 4:
                     PesquisarPeloCargo();
                     break;
-                case 6:
+                case 5:
                     Estatisticas();
                     break;
-                case 7:
+                case 6:
                     return;
 
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
             }
-            menuFuncionarios = Integer.parseInt(
+            menu = Integer.parseInt(
                     JOptionPane.showInputDialog(null,
                                 "1 - Cadastrar funcionários"
                             + "\n"
@@ -185,7 +185,7 @@ public class Funcionario {
                 "Digite o cargo que este funcionário exerce :");
         cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Digite a carga horária deste funcionário :"));
-        salarios[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
+        salarios[posicao] = JOptionPane.showInputDialog(
                 "Digite o salário deste funcionário :",
         salarios[posicao] != 0 ? salarios[posicao] : 0)
                 .replace(" ", "").replace("R$", "")
@@ -222,9 +222,9 @@ public class Funcionario {
                 if (("" +salarios[i].contains(menorSalario)) {
                     apresentarInformacao2(i);
                 }
-            for (int i = 0; i < atual; i++) {
+            for (int j = 0; j < atual; j++) {
                 if (("" + salarios[i].contains(maiorSalario)) {
-                    apresentarInformacao2(i);
+                    apresentarInformacao2(j);
                 }   
                 
             }
