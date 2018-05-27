@@ -88,8 +88,8 @@ public class Hospede {
             nomes = new String[Hotel.hotelQuartos];
             idades = new int[Hotel.hotelQuartos];
             sexos = new char[Hotel.hotelQuartos];
-            checkin = new int[Hotel.hotelQuartos];
-            checkout = new int[Hotel.hotelQuartos];
+            checkin = new String[Hotel.hotelQuartos];
+            checkout = new String[Hotel.hotelQuartos];
             quartos = new int[Hotel.hotelQuartos];
             status = new int[Hotel.hotelQuartos];
             receita = new double[Hotel.hotelQuartos];
