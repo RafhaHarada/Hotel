@@ -113,19 +113,24 @@ public class Hospede {
 
     public void Listar() {
         String texto = "";
-        for (int i = 0; i < atual; i++) {
+        if (atual > 0){
+        for (int posicao = 0; posicao < atual; posicao++) {
             texto +=    "Acompanhe abaixo a listagem dos hóspedes :"
                     + "\n"
-                    + "\nNome : "                        + nomes[i]
-                    + "\nIdade : "                       + idades[i]
-                    + "\nSexo : "                        + sexos[i]
-                    + "\nCheck-in : "                    + checkin[i]
-                    + "\nCheck-out : "                   + checkout[i]
-                    + "\nSQuarto : "                     + quartos[i]
-                    + "\nReceita : "                     + receita[i]
+                    + "\nNome : "                        + nomes[posicao]
+                    + "\nIdade : "                       + idades[posicao]
+                    + "\nSexo : "                        + sexos[posicao]
+                    + "\nCheck-in : "                    + checkin[posicao]
+                    + "\nCheck-out : "                   + checkout[posicao]
+                    + "\nQuarto : "                      + quartos[posicao]
+                    + "\nReceita : "                     + receita[posicao]
                     + "\n";
+                }
+            } else {
+                texto = "Nenhum hóspede está cadastrado!";
+            }
+                    JOptionPane.showMessageDialog(null, texto);
         }
-    }
 
     public void PesquisarPorNome() {
         String pesquisar = (String) JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
