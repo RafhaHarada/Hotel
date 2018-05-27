@@ -74,7 +74,7 @@ public class Funcionario {
                             + "\n5 - Pesquisar pelo cargo"
                             + "\n6 - Finalizar", "",
                             JOptionPane.QUESTION_MESSAGE));
-            ;
+             
         }
     }
 
