@@ -57,26 +57,26 @@ public class Hospede {
                         options,
                         options[7]
                 );
-                switch (menuHospedes) {
-                    case 1:
+                switch (menu) {
+                    case 0:
                         Cadastrar();
                         break;
-                    case 2:
+                    case 1:
                         Editar();
                         break;
-                    case 3:
+                    case 2:
                         Listar();
                         break;
-                    case 4:
+                    case 3:
                         PesquisarPorNome();
                         break;
-                    case 5:
+                    case 4:
                         PesquisarPorCheckIn();
                         break;
-                    case 6:
+                    case 5:
                         PesquisarPorCheckOut();
                         break;
-                    case 7:
+                    case 6:
                         return;
     
                     default:
@@ -191,7 +191,7 @@ public class Hospede {
         checkin[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-in deste hóspede: "
                 +"\n"
-                +"ATENÇÃO!" +"\n"
+                +"ATENÇÃO!" 
                 +"\n"
                 +"Quando for digitar a data de Check-In certifique-se que a data se encaixa nos padrões abaixo:"
                 +"\n1 - " +"Se o dia conter apenas um dígito, como por exemplo se o dia for '1' ou '2' ou '9'"
@@ -204,11 +204,11 @@ public class Hospede {
                 +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
                 +"\n"
                 +"\n4 - " +"NÃO deixe um espaço em branco ou digite '-' para separar dia de mês e ano.Use '/' como"
-                +"\nno exemplo a seguir : '02/03/2018'").checkin.replace("/");
+                +"\nno exemplo a seguir : '02/03/2018'").replace("-","/").replace("","/");
         checkout[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-out deste hóspede: "
                 +"\n"
-                +"ATENÇÃO!" +"\n"
+                +"ATENÇÃO!"
                 +"\n"
                 +"Quando for digitar a data de Check-Out certifique-se que a data se encaixa nos padrões abaixo:"
                 +"\n1 - " +"Se o dia conter apenas um dígito, como por exemplo se o dia for '1' ou '2' ou '9'"
@@ -221,7 +221,7 @@ public class Hospede {
                 +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
                 +"\n"
                 +"\n4 - " +"NÃO deixe um espaço em branco ou digite '-' para separar dia de mês e ano.Use '/' como"
-                +"\nno exemplo a seguir : '02/03/2018'").checkout.replace("/");
+                +"\nno exemplo a seguir : '02/03/2018'").replace("-","/").replace("","/");
         quartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "informe o quarto em que este hóspede alugou: "));
         receita[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
