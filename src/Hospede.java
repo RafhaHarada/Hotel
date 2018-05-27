@@ -113,13 +113,16 @@ public class Hospede {
     public void Listar() {
         String texto = "";
         for (int i = 0; i < atual; i++) {
-            texto += "Nome : "             + nomes[i]
-                    + "\nIdade : "         + idades[i]
-                    + "\nSexo : "          + sexos[i]
-                    + "\nCheck-in : "      + checkin[i]
-                    + "\nCheck-out : "     + checkout[i]
-                    + "\nSQuarto : "       + quartos[i]
-                    + "\nReceita : "       + receita[i];
+            texto +=    "Acompanhe abaixo a listagem dos hóspedes :"
+                    + "\n"
+                    + "\nNome : "                        + nomes[i]
+                    + "\nIdade : "                       + idades[i]
+                    + "\nSexo : "                        + sexos[i]
+                    + "\nCheck-in : "                    + checkin[i]
+                    + "\nCheck-out : "                   + checkout[i]
+                    + "\nSQuarto : "                     + quartos[i]
+                    + "\nReceita : "                     + receita[i]
+                    + "\n";
         }
     }
 
@@ -160,13 +163,16 @@ public class Hospede {
 
     public void apresentarInformacao(int posicao) {
         JOptionPane.showMessageDialog(null,
-                "Nome: "                   + nomes[posicao]
-                + "\nIdade: "              + idades[posicao]
-                + "\nSexo: "               + sexos[posicao]
-                + "\nCheck-in: "           + checkin[posicao]
-                + "\nCheck-out: "          + checkout[posicao]
-                + "\nNº do quarto: "       + quartos[posicao]
-                + "\nReceita: "            + receita[posicao]);
+                "Acompanhe abaixo as informações sobre os hóspedes:"
+                + "\n"
+                + "\nNome: "                        + nomes[posicao]
+                + "\nIdade: "                       + idades[posicao]
+                + "\nSexo: "                        + sexos[posicao]
+                + "\nCheck-in: "                    + checkin[posicao]
+                + "\nCheck-out: "                   + checkout[posicao]
+                + "\nNº do quarto: "                + quartos[posicao]
+                + "\nReceita: "                     + receita[posicao]
+                + "\n");
 
     }
 

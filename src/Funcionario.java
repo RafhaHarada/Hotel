@@ -36,11 +36,18 @@ public class Funcionario {
     public void menuFuncionarios() {
         int menuFuncionarios = Integer.parseInt(
                 JOptionPane.showInputDialog(null,
-                        "1 - Cadastrar funcionários"
+                          "Digite o número referente a tarefa que deseje executar:"
+                        + "\n"
+                        + "\n1 - Cadastrar funcionários"
+                        + "\n"
                         + "\n2 - Editar funcionários"
+                        + "\n"
                         + "\n3 - Listar funcionários"
+                        + "\n"
                         + "\n4 - Pesquisar pelo nome"
+                        + "\n"
                         + "\n5 - Pesquisar pelo cargo"
+                        + "\n"
                         + "\n6 - Finalizar", "",
                         JOptionPane.QUESTION_MESSAGE));
 
@@ -67,11 +74,16 @@ public class Funcionario {
             }
             menuFuncionarios = Integer.parseInt(
                     JOptionPane.showInputDialog(null,
-                            "1 - Cadastrar funcionários"
+                                "1 - Cadastrar funcionários"
+                            + "\n"
                             + "\n2 - Editar funcionários"
+                            + "\n"
                             + "\n3 - Listar funcionários"
+                            + "\n"
                             + "\n4 - Pesquisar pelo nome"
+                            + "\n"
                             + "\n5 - Pesquisar pelo cargo"
+                            + "\n"
                             + "\n6 - Finalizar", "",
                             JOptionPane.QUESTION_MESSAGE));
              
@@ -79,7 +91,8 @@ public class Funcionario {
     }
 
     public void Editar() {
-        String procurar = (String) JOptionPane.showInputDialog("Informe o nome  para editar");
+        String procurar = JOptionPane.showInputDialog(
+                          "Informe o nome  para editar");
         for (int i = 0; i < atual; i++) {
             if (nomes[i].equals(procurar)) {
                 solicitarInformacao(i);
@@ -91,20 +104,24 @@ public class Funcionario {
     public void Listar() {
         String texto = "";
         for (int i = 0; i < atual; i++) {
-            texto += "Nome : " + nomes[i]
-                    + "\nIdade : " + idades[i]
-                    + "\nSexo : " + sexos[i]
-                    + "\nCargo : " + cargos[i]
-                    + "\nCarga Horária : " + cargasHorarias[i]
-                    + "\nSalário : " + salarios[i]
-                    + "\nDesempenho : " + desempenhos[i];
+            texto +=  "Acompanhe abaixo a listagem dos funcionários:"
+                    + "\n"
+                    + "\nNome : "                         + nomes[i]
+                    + "\nIdade : "                        + idades[i]
+                    + "\nSexo : "                         + sexos[i]
+                    + "\nCargo : "                        + cargos[i]
+                    + "\nCarga Horária : "                + cargasHorarias[i]
+                    + "\nSalário : "                      + salarios[i]
+                    + "\nDesempenho : "                   + desempenhos[i]
+                    + "\n";
 
         }
         JOptionPane.showMessageDialog(null, texto);
     }
 
     public void PesquisarPeloNome() {
-        String buscar = (String) JOptionPane.showInputDialog("Digite o nome do funcionário para pesquisar :");
+        String buscar = JOptionPane.showInputDialog(
+                        "Digite o nome do funcionário para pesquisar :");
         for (int i = 0; i < atual; i++) {
             if (nomes[i].contains(buscar)) {
                 apresentarInformacao(i);
@@ -113,7 +130,8 @@ public class Funcionario {
     }
 
     public void PesquisarPeloCargo() {
-        String buscar = (String) JOptionPane.showInputDialog("Digite o cargo para pesquisar funcionários :");
+        String buscar = JOptionPane.showInputDialog(
+                        "Digite o cargo para pesquisar funcionários :");
         for (int i = 0; i < atual; i++) {
             if (cargos[i].contains(buscar)) {
                 apresentarInformacao(i);
@@ -123,13 +141,16 @@ public class Funcionario {
 
     public void apresentarInformacao(int posicao) {
         JOptionPane.showMessageDialog(null,
-                "Nome: " + nomes[posicao]
-                + "\nIdade: " + idades[posicao]
-                + "\nSexo: " + sexos[posicao]
-                + "\nCargo: " + cargos[posicao]
-                + "\nCarga Horária: " + cargasHorarias[posicao]
-                + "\nSalário: " + salarios[posicao]
-                + "\nDesempenho: " + desempenhos[posicao]);
+                "Acompanhe abaixo as informações sobre os funcionários:"
+                + "\n"
+                + "\nNome: "                           + nomes[posicao]
+                + "\nIdade: "                          + idades[posicao]
+                + "\nSexo: "                           + sexos[posicao]
+                + "\nCargo: "                          + cargos[posicao]
+                + "\nCarga Horária: "                  + cargasHorarias[posicao]
+                + "\nSalário: "                        + salarios[posicao]
+                + "\nDesempenho: "                     + desempenhos[posicao]
+                + "\n");
 
     }
 
@@ -153,8 +174,12 @@ public class Funcionario {
                 "Digite o cargo que este funcionário exerce :");
         cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Digite a carga horária deste funcionário :"));
-        salarios[atual] = Double.parseDouble(JOptionPane.showInputDialog(
-                "Digite o salário deste funcionário :"));
+        salarios[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
+                "Digite o salário deste funcionário :",
+        salarios[posicao] != 0 ? salarios[posicao] : 0)
+                .replace(" ", "").replace("R$", "")
+                .replace(".", "").replace(",", ".")
+        );
         desempenhos[atual] = JOptionPane.showInputDialog(
                 "Descreva o desemepenho deste funcionário :");
 
@@ -169,7 +194,10 @@ public class Funcionario {
             }
             if (salarios[posicao] > maiorSalario) {
                 maiorSalario = salarios[posicao];
-               }
+
+
+                   
+                }
             }
 
         }
