@@ -176,9 +176,11 @@ public class Hospede {
         ));
 		for (int i = 0; i<numCadastros ; i++){
         nomes[posicao] = JOptionPane.showInputDialog(
-                "Informe o nome do funcionário :");
+                "Informe o nome do hóspede :");
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a idade deste funcionário: "));
+                "Digite a idade deste hóspede: "));
+        sexos[posicao] = JOptionPane.showInputDialog(
+                    "Digite o sexo deste hóspede :").charAt(0);
         checkin[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-in deste hóspede: "
                 +"\n"

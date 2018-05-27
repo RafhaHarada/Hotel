@@ -140,15 +140,15 @@ public class Funcionario {
         
         public void solicitarInformacao(int posicao) {
         int numCadastros = Integer.parseInt(JOptionPane.showInputDialog(
-            "Infrome o número de funcionários que deseje cadastrar : "));
+            "Informe o número de funcionários que deseje cadastrar : "));
         int cadastros = 0;
         while (numCadastros <0){
         nomes[posicao] = JOptionPane.showInputDialog(
                 "Digite o nome do funcionário :");
         idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Informe o sexo deste funcionário : "));
+                "Informe a idade deste funcionário :"));
         sexos[posicao] = JOptionPane.showInputDialog(
-                nomes[posicao] + " digite o seu sexo").charAt(0);
+                "Iigite o sexo deste funcionário :").charAt(0);
         cargos[posicao] = JOptionPane.showInputDialog(
                 "Digite o cargo que este funcionário exerce :");
         cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
