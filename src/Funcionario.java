@@ -50,10 +50,12 @@ public class Funcionario {
                         + "\n"
                         + "\n5 - Pesquisar pelo cargo"
                         + "\n"
-                        + "\n6 - Finalizar", "",
+                        + "\n6 - Estatísticas"
+                        + "\n"
+                        + "\n7 - Finalizar", "",
                         JOptionPane.QUESTION_MESSAGE));
 
-        while (menuFuncionarios != 6) {
+        while (menuFuncionarios != 7) {
             switch (menuFuncionarios) {
                 case 1:
                     cadastrar();
@@ -71,6 +73,9 @@ public class Funcionario {
                     PesquisarPeloCargo();
                     break;
                 case 6:
+                    Estatisticas();
+                    break;
+                case 7:
                     return;
 
                 default:
@@ -88,7 +93,9 @@ public class Funcionario {
                             + "\n"
                             + "\n5 - Pesquisar pelo cargo"
                             + "\n"
-                            + "\n6 - Finalizar", "",
+                            + "\n6 - Estatísticas"
+                            + "\n"
+                            + "\n7 - Finalizar", "",
                             JOptionPane.QUESTION_MESSAGE));
              
         }
