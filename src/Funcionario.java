@@ -182,7 +182,18 @@ public class Funcionario {
         );
         desempenhos[atual] = JOptionPane.showInputDialog(
                 "Descreva o desemepenho deste funcionário :");
+        }
+    }
 
+    public void apresentarInformacao2(int posicao){
+        JOptionPane.showMessageDialog(null,
+               "Nome : "                     + nomes [posicao]
+           + "\nCargo : "                    + cargos [posicao]
+           + "\nSalário : "                  + salarios [posicao]
+           +"\n");
+    }
+
+    public void Estatisticas(){
         double menorSalario = Double.MAX_VALUE;
 
         double maiorSalario = Double.MIN_VALUE;
@@ -193,15 +204,23 @@ public class Funcionario {
                 menorSalario = salarios[posicao];
             }
             if (salarios[posicao] > maiorSalario) {
-                maiorSalario = salarios[posicao];
+                maiorSalario = salarios[posicao];       
+            }
 
-
-                   
+            for (int i = 0; i < atual; i++) {
+                if (("" +salarios[i].contains(menorSalario)) {
+                    apresentarInformacao2(i);
                 }
+            for (int i = 0; i < atual; i++) {
+                if (("" + salarios[i].contains(maiorSalario)) {
+                    apresentarInformacao2(i);
+                }   
+                
             }
 
         }
 
-    }
+        }
 
+    }
 }

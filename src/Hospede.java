@@ -41,7 +41,8 @@ public class Hospede {
     }
 
     public void menu() {
-        Object[] options = {"Cadastrar Hóspedes", "Editar Hóspedes", "Listar Hóspedes", "Pesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Finalizar"};
+        Object[] options = {"Cadastrar Hóspedes", "Editar Hóspedes", "Listar Hóspedes", 
+            "\nPesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Finalizar"};
             int menu = 0;
     
             while (menu != 7) {
@@ -203,7 +204,7 @@ public class Hospede {
                 +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
                 +"\n"
                 +"\n4 - " +"NÃO deixe um espaço em branco ou digite '-' para separar dia de mês e ano.Use '/' como"
-                +"\nno exemplo a seguir : '02/03/2018'").checkin.replace("/");;
+                +"\nno exemplo a seguir : '02/03/2018'").checkin.replace("/");
         checkout[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-out deste hóspede: "
                 +"\n"
