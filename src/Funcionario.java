@@ -181,7 +181,7 @@ public class Funcionario {
                 .replace(".", "").replace(",", ".")
         );
         desempenhos[atual] = JOptionPane.showInputDialog(
-                "Descreva o desemepenho deste funcionário :");
+                "Descreva o desempenho deste funcionário :");
         }
     }
 
