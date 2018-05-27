@@ -14,7 +14,7 @@ public class Hotel {
 
     static int hotelAndares;
     static int hotelQuartos;
-
+    static String hotelAvaliacao;
     public void Cadastrar() {
         String hotelNome = JOptionPane.showInputDialog(null,
                 "Primeiramente, cadastraremos seu hotel.\nPor favor insira o nome do Hotel",
@@ -44,8 +44,7 @@ public class Hotel {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 estrelasAvaliacao,
-                estrelasAvaliacao[0])
-                .toString();*/
+                estrelasAvaliacao[0]).toString();*/
         hotelAndares = Integer.parseInt(JOptionPane.showInputDialog(null,
                 "Por favor insira a quantidade de andares do " + hotelNome + ":",
                 "Cadastro do Hotel",
