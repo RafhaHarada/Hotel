@@ -1,4 +1,3 @@
-
 import javax.swing.JOptionPane;
 
 /*
@@ -22,8 +21,8 @@ public class Hospede {
     static String[] nomes = new String[0];
     int[] idades = new int[0];
     char[] sexos = new char[0];
-    int[] checkin = new int[0];
-    static int[] checkout = new int[0];
+    String[] checkin = new String[0];
+    static String[] checkout = new String[0];
     static int[] quartos = new int[0];
     static int[] status = new int[0];
     double[] receita = new double[0];
@@ -57,8 +56,6 @@ public class Hospede {
                         options,
                         options[7]
                 );
-    
-            while (menuHospedes != 7) {
                 switch (menuHospedes) {
                     case 1:
                         Cadastrar();
@@ -84,7 +81,7 @@ public class Hospede {
                     default:
                         JOptionPane.showMessageDialog(null, "Opção inválida");
                 }
-            }
+            
         }
     }
         public void atualizacaoHospede(){
@@ -174,21 +171,55 @@ public class Hospede {
     }
 
     public void solicitarInformacao(int posicao) {
-        nomes[posicao] = (String) JOptionPane.showInputDialog(
+        int numCadastros = Integer.parseInt(JOptionPane.showInputDialog(
+                "Informe o número de hóspedes que deseja cadastrar:"
+        ));
+		for (int i = 0; i<numCadastros ; i++){
+        nomes[posicao] = JOptionPane.showInputDialog(
                 "Informe o nome do funcionário :");
-        idades[posicao] = Integer.parseInt((String) JOptionPane.showInputDialog(
+        idades[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Digite a idade deste funcionário: "));
-        checkin[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a data de check-in deste hóspede: "));
-        checkout[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
-                "Digite a data de check-out deste hóspede: "));
+        checkin[posicao] = JOptionPane.showInputDialog(
+                "Digite a data de check-in deste hóspede: "
+                +"\n"
+                +"ATENÇÃO!" +"\n"
+                +"\n"
+                +"Quando for digitar a data de Check-In certifique-se que a data se encaixa nos padrões abaixo:"
+                +"\n1 - " +"Se o dia conter apenas um dígito, como por exemplo se o dia for '1' ou '2' ou '9'"
+                +"\nacrescente um 0 a frente como no exemplo a seguir: Se o dia for '2' digite '02'"
+                +"\n"
+                +"\n2 - " +"NÃO digite o nome do mês, DIGITE o número referente ao mês. Como por exemplo: No lugar"
+                +"\nde 'Fevereiro' escreva '02'"
+                +"\n"
+                +"\n3 - " +"Se o número referente ao mês for um número menor que 10, que contém apenas um dígito"
+                +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
+                +"\n"
+                +"\n4 - " +"NÃO deixe um espaço em branco ou digite '-' para separar dia de mês e ano.Use '/' como"
+                +"\nno exemplo a seguir : '02/03/2018'").checkin.replace("/");;
+        checkout[posicao] = JOptionPane.showInputDialog(
+                "Digite a data de check-out deste hóspede: "
+                +"\n"
+                +"ATENÇÃO!" +"\n"
+                +"\n"
+                +"Quando for digitar a data de Check-Out certifique-se que a data se encaixa nos padrões abaixo:"
+                +"\n1 - " +"Se o dia conter apenas um dígito, como por exemplo se o dia for '1' ou '2' ou '9'"
+                +"\nacrescente um 0 a frente como no exemplo a seguir: Se o dia for '2' digite '02'"
+                +"\n"
+                +"\n2 - " +"NÃO digite o nome do mês, DIGITE o número referente ao mês. Como por exemplo: No lugar"
+                +"\nde 'Fevereiro' escreva '02'"
+                +"\n"
+                +"\n3 - " +"Se o número referente ao mês for um número menor que 10, que contém apenas um dígito"
+                +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
+                +"\n"
+                +"\n4 - " +"NÃO deixe um espaço em branco ou digite '-' para separar dia de mês e ano.Use '/' como"
+                +"\nno exemplo a seguir : '02/03/2018'").checkout.replace("/");
         quartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "informe o quarto em que este hóspede alugou: "));
         receita[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
                 "Informe a receita deste hóspede"));
 
         status[posicao] = 1;
-
+        }
     }
 
 }
