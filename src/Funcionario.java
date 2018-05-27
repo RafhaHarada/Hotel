@@ -26,14 +26,16 @@ public class Funcionario {
     int[] cargasHorarias = new int[1000];
     double[] salarios = new double[1000];
     String[] desempenhos = new String[1000];
+    
     int atual = 0;
+    private int menuFuncionarios;
 
     public void cadastrar() {
         solicitarInformacao(atual);
         atual++;
     }
 
-    public void menuFuncionarios() {
+    public void menu() {
         int menuFuncionarios = Integer.parseInt(
                 JOptionPane.showInputDialog(null,
                           "Digite o número referente a tarefa que deseje executar:"
@@ -68,6 +70,8 @@ public class Funcionario {
                 case 5:
                     PesquisarPeloCargo();
                     break;
+                case 6:
+                    return;
 
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");

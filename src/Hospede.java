@@ -29,7 +29,7 @@ public class Hospede {
 
     int atual = 0;
     private int menuHospedes;
-
+   
     public void Cadastrar() {
         if (atual == 0) {
             for (int i = 0; i < status.length; i++) {
