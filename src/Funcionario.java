@@ -201,10 +201,9 @@ public class Funcionario {
 
     public void Estatisticas(int posicao){
         double menorSalario = Double.MAX_VALUE;
-
         double maiorSalario = Double.MIN_VALUE;
 
-        for (int i = 0; i > 2; i++) {
+        for (int posicao = 0; posicao < atual; posicao++){
 
             if (salarios[posicao] < menorSalario) {
                 menorSalario = salarios[posicao];
@@ -216,8 +215,6 @@ public class Funcionario {
             JOptionPane.showMessageDialog(null,
             "O maior salário registrado foi : " +maiorSalario
             +"\nO menor salário registrado foi : " +menorSalario);
-
-        
 
         }
 

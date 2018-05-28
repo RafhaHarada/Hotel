@@ -102,7 +102,7 @@ public class Hospede {
     }
 
     public void Editar() {
-        String procurar = (String) JOptionPane.showInputDialog("Digite o nome do hóspede para editar :");
+        String procurar = JOptionPane.showInputDialog("Digite o nome do hóspede para editar :");
         for (int i = 0; i < atual; i++) {
             if (nomes[i].contains(procurar)) {
                 solicitarInformacao(i);
@@ -133,7 +133,7 @@ public class Hospede {
         }
 
     public void PesquisarPorNome() {
-        String pesquisar = (String) JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
+        String pesquisar = JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
         for (int i = 0; i < atual; i++) {
             if (nomes[i].contains(pesquisar)) {
                 apresentarInformacao(i);
@@ -142,7 +142,7 @@ public class Hospede {
     }
 
     public void PesquisarPorCheckIn() {
-        String pesquisar = (String) JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
+        String pesquisar = JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
         for (int i = 0; i < atual; i++) {
             if (("" + checkin[i]).contains(pesquisar)) {
                 apresentarInformacao(i);
@@ -151,7 +151,7 @@ public class Hospede {
     }
 
     public void PesquisarPorCheckOut() {
-        String pesquisar = (String) JOptionPane.showInputDialog(" Digite a data de check-out para pesquisar :");
+        String pesquisar = JOptionPane.showInputDialog(" Digite a data de check-out para pesquisar :");
         for (int i = 0; i < atual; i++) {
             if (("" + checkout[i]).contains(pesquisar)) {
                 apresentarInformacao(i);
