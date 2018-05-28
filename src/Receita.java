@@ -94,8 +94,6 @@ public class Receita {
         if (posicao != JOptionPane.CLOSED_OPTION) {
              apresentarInformacao(posicao);
             
-            return;
-            
         }
 
     }
@@ -155,16 +153,19 @@ public class Receita {
                     - Custos.gastosComFuncionarios[posicao] - Custos.gastosComLimpezas[posicao]
                     - Custos.gastosComTelefoneEInternets[posicao] - Custos.gastosComMarketings[posicao];
             lucrosMensais[posicao] = lucroMes;
-        
+            
+            double margemDeLucro = lucroMes / totalMes * 100;
+            
             JOptionPane.showMessageDialog(null, 
-                "Quartos: " + ganhosComQuartos[posicao]
-                + "\nComida e bebidas: " + ganhosComComidaEBebidas[posicao]
-                + "\nConveniências: " + ganhosComConveniencias[posicao]
-                + "\nServiços extras prestado: " + ganhosComServicosExtras[posicao]
-                + "\nAluguéis: " + ganhosComAlugueis[posicao]
-                + "\nEventos: " + ganhosComEventos[posicao]
-                + "\nReeita do mês: " + totalMes
-                + "\nLucro do mês: " + lucroMes);
+                    "Quartos: " + ganhosComQuartos[posicao] 
+                    + "\nComida e bebidas: " + ganhosComComidaEBebidas[posicao]
+                    + "\nConveniências: " + ganhosComConveniencias[posicao]
+                    + "\nServiços extras prestado: " + ganhosComServicosExtras[posicao]
+                    + "\nAluguéis: " + ganhosComAlugueis[posicao]
+                    + "\nEventos: " + ganhosComEventos[posicao]
+                    + "\nReceita do mês: " + totalMes
+                    + "\nLucro do mês: " + lucroMes
+                    + "\nMargem de lucro: " + margemDeLucro + "%");
     }
     public void solicitarInformacao(int posicao){
          ganhosComQuartos[posicao] = 0;

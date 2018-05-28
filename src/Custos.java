@@ -53,38 +53,7 @@ public class Custos {
                 default:
                     return;
             }}}
-    /*public void menu(){
-         Custos custos = new Custos();
-         int menuGastos(){
-        int menuCustos = 
-            JOptionPane.showOptionDialog(null, "MENU DOS CUSTOS", "CustosHotel", 0, 0, 
-            null, new Object[]{
-                "Cadastrar", "Editar", "Listar", "buscarPelo Mes", "Sair"
-            }, "Cadastrar");
-            return menuCustos;
-    }
-    public void organizarMenu(){
-        int menuCustos = menuGastos();
-        while (menuCustos != 4) {
-            switch (menuCustos) {
-                case 1:
-                    cadastrar();
-                    break;
-                case 2:
-                    editar();
-                    break;
-                case 3:
-                    listar();
-                    break;
-                case 4:
-                    buscarPeloMes();
-                    break;
-            }
-            menuCustos = menuGastos();
-        }
     
-    }*/
-
     public void cadastrar() {
        solicitarInformacao(atual);
        atual++;
@@ -118,7 +87,6 @@ public class Custos {
                 0, JOptionPane.QUESTION_MESSAGE, null, custos, "");
         if (posicao != JOptionPane.CLOSED_OPTION) {
             apresentarInformacao(posicao);
-            return;
             
         }
 
