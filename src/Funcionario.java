@@ -199,14 +199,6 @@ public class Funcionario {
         }
     }
 
-    public void apresentarInformacao2(int posicao){
-        JOptionPane.showMessageDialog(null,
-               "Nome : "                     + nomes [posicao]
-           + "\nCargo : "                    + cargos [posicao]
-           + "\nSalário : "                  + salarios [posicao]
-           +"\n");
-    }
-
     public void Estatisticas(int posicao){
         double menorSalario = Double.MAX_VALUE;
 
