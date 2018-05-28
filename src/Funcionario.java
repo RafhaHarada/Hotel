@@ -24,7 +24,7 @@ public class Funcionario {
     char[] sexos = new char[1000];
     String[] cargos = new String[1000];
     int[] cargasHorarias = new int[1000];
-    String[] salarios = new String[1000];
+    double[] salarios = new double[1000];
     String[] desempenhos = new String[1000];
     
     int atual = 0;
@@ -114,20 +114,23 @@ public class Funcionario {
 
     public void Listar() {
         String texto = "";
-        for (int i = 0; i < atual; i++) {
+        if (atual > 0){
+        for (int posicao = 0; posicao < atual; posicao++) {
             texto +=  "Acompanhe abaixo a listagem dos funcionários:"
                     + "\n"
-                    + "\nNome : "                         + nomes[i]
-                    + "\nIdade : "                        + idades[i]
-                    + "\nSexo : "                         + sexos[i]
-                    + "\nCargo : "                        + cargos[i]
-                    + "\nCarga Horária : "                + cargasHorarias[i]
-                    + "\nSalário : "                      + salarios[i]
-                    + "\nDesempenho : "                   + desempenhos[i]
+                    + "\nNome : "                         + nomes[posicao]
+                    + "\nIdade : "                        + idades[posicao]
+                    + "\nSexo : "                         + sexos[posicao]
+                    + "\nCargo : "                        + cargos[posicao]
+                    + "\nCarga Horária : "                + cargasHorarias[posicao]
+                    + "\nSalário : "                      + salarios[posicao]
+                    + "\nDesempenho : "                   + desempenhos[posicao]
                     + "\n";
-
         }
-        JOptionPane.showMessageDialog(null, texto);
+        } else {
+            texto = "Nenhum funcionário está cadastrado!";
+        }
+                JOptionPane.showMessageDialog(null, texto);
     }
 
     public void PesquisarPeloNome() {
@@ -172,7 +175,7 @@ public class Funcionario {
         
         public void solicitarInformacao(int posicao) {
         int numCadastros = Integer.parseInt(JOptionPane.showInputDialog(
-            "Informe o número de funcionários que deseje cadastrar : "));
+               "Informe o número de funcionários que deseje cadastrar : "));
         int cadastros = 0;
         while (numCadastros <0){
         nomes[posicao] = JOptionPane.showInputDialog(
@@ -196,20 +199,11 @@ public class Funcionario {
         }
     }
 
-    public void apresentarInformacao2(int posicao){
-        JOptionPane.showMessageDialog(null,
-               "Nome : "                     + nomes [posicao]
-           + "\nCargo : "                    + cargos [posicao]
-           + "\nSalário : "                  + salarios [posicao]
-           +"\n");
-    }
-
-    public void Estatisticas(){
+    public void Estatisticas(int posicao){
         double menorSalario = Double.MAX_VALUE;
-
         double maiorSalario = Double.MIN_VALUE;
 
-        for (int i = 0; i > 2; i++) {
+        for (int posicao = 0; posicao < atual; posicao++){
 
             if (salarios[posicao] < menorSalario) {
                 menorSalario = salarios[posicao];
@@ -218,18 +212,9 @@ public class Funcionario {
                 maiorSalario = salarios[posicao];       
             }
 
-            for (int i = 0; i < atual; i++) {
-                if (("" +salarios[i].contains(menorSalario)) {
-                    apresentarInformacao2(i);
-                }
-            for (int j = 0; j < atual; j++) {
-                if (("" + salarios[i].contains(maiorSalario)) {
-                    apresentarInformacao2(j);
-                }   
-                
-            }
-
-        }
+            JOptionPane.showMessageDialog(null,
+            "O maior salário registrado foi : " +maiorSalario
+            +"\nO menor salário registrado foi : " +menorSalario);
 
         }
 

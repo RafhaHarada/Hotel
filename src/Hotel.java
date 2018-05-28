@@ -19,10 +19,10 @@ public class Hotel {
     String anterior = "";
     String hotelNome = "";
     String endereco = "";
-    String telefoneHotel = "";
     String email = "";
     Object[] estrelasAvaliacao = {"★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"};
     Object[] options = {"Editar","Informações","Voltar"};
+    int telefoneHotel = 0;
     int i = 0;
 
     public void menu(){
@@ -134,26 +134,31 @@ public class Hotel {
                 endereco = "";
             }
         }
-        while (telefoneHotel.equals("") && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
+        while (telefoneHotel == 0 && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
             try {
-                anterior = telefoneHotel;
-                telefoneHotel = JOptionPane.showInputDialog(null,
+                anterior = "" + telefoneHotel;
+                telefoneHotel = Integer.parseInt(JOptionPane.showInputDialog(null,
                         "Por favor insira o telefone do " + hotelNome + ":",
                         "Cadastro do Hotel",
                         JOptionPane.QUESTION_MESSAGE)
-                        .trim();
-                if (telefoneHotel.equalsIgnoreCase("sair")) {
+                        .trim()
+                        .replace("+","")
+                        .replace("-","")
+                        .replace(".","")
+                        .replace("(","")
+                        .replace(")",""));
+                if (telefoneHotel == 7247) {
                     sair++;
-                    telefoneHotel = anterior;
+                    telefoneHotel = Integer.parseInt(anterior);
                     anterior = "sair";
                 }
-                anterior = telefoneHotel;
+                anterior = "" + telefoneHotel;
                 if (!anterior.equals("")) {
                     break;
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Insira para continuar.\nOu insira \"Sair\" para fechar o sistema", "Ops...", JOptionPane.WARNING_MESSAGE);
-                telefoneHotel = "";
+                JOptionPane.showMessageDialog(null, "Insira para continuar.\nOu insira \"7247\" para fechar o sistema", "Ops...", JOptionPane.WARNING_MESSAGE);
+                telefoneHotel = 0;
             }
         }
         while (email.equals("") && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
