@@ -24,7 +24,7 @@ public class Funcionario {
     char[] sexos = new char[1000];
     String[] cargos = new String[1000];
     int[] cargasHorarias = new int[1000];
-    double[] salarios = new String[1000];
+    double[] salarios = new double[1000];
     String[] desempenhos = new String[1000];
     
     int atual = 0;
@@ -221,18 +221,11 @@ public class Funcionario {
                 maiorSalario = salarios[posicao];       
             }
 
-            for (int i = 0; i < atual; i++) {
-                if (salarios[i]==menorSalario) {
-                    apresentarInformacao2(i);
-                }
-            for (int j = 0; j < atual; j++) {
-                if (salarios[i]==maiorSalario) {
-                    apresentarInformacao2(j);
-                }   
-                
-            }
+            JOptionPane.showMessageDialog(null,
+            "O maior salário registrado foi : " +maiorSalario
+            +"\nO menor salário registrado foi : " +menorSalario);
 
-        }
+        
 
         }
 
