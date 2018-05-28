@@ -28,7 +28,6 @@ public class Funcionario {
     String[] desempenhos = new String[1000];
     
     int atual = 0;
-    private int menuFuncionarios;
 
     public void cadastrar() {
         solicitarInformacao(atual);
@@ -188,7 +187,7 @@ public class Funcionario {
                 "Digite o cargo que este funcionário exerce :");
         cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "Digite a carga horária deste funcionário :"));
-        salarios[posicao] = JOptionPane.showInputDialog(
+        salarios[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
                 "Digite o salário deste funcionário :",
         salarios[posicao] != 0 ? salarios[posicao] : 0)
                 .replace(" ", "").replace("R$", "")
@@ -199,7 +198,7 @@ public class Funcionario {
         }
     }
 
-    public void Estatisticas(int posicao){
+    public void Estatisticas(){
         double menorSalario = Double.MAX_VALUE;
         double maiorSalario = Double.MIN_VALUE;
 

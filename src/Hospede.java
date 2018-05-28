@@ -28,7 +28,6 @@ public class Hospede {
     double[] receita = new double[0];
 
     int atual = 0;
-    private int menuHospedes;
    
     public void Cadastrar() {
         if (atual == 0) {
@@ -144,7 +143,7 @@ public class Hospede {
     public void PesquisarPorCheckIn() {
         String pesquisar = JOptionPane.showInputDialog(" Digite o nome do hóspede para pesquisar :");
         for (int i = 0; i < atual; i++) {
-            if (("" + checkin[i]).contains(pesquisar)) {
+            if ((checkin[i]).contains(pesquisar)) {
                 apresentarInformacao(i);
             }
         }
@@ -153,7 +152,7 @@ public class Hospede {
     public void PesquisarPorCheckOut() {
         String pesquisar = JOptionPane.showInputDialog(" Digite a data de check-out para pesquisar :");
         for (int i = 0; i < atual; i++) {
-            if (("" + checkout[i]).contains(pesquisar)) {
+            if ((checkout[i]).contains(pesquisar)) {
                 apresentarInformacao(i);
             }
         }
