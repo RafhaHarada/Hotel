@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
  * @author Cidmar
  */
 public class Receita {
+    
+    String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
     double[] ganhosComQuartos = new double[12];
     double[] ganhosComComidaEBebidas = new double[12];
     double[] ganhosComConveniencias = new double[12];
@@ -17,10 +19,10 @@ public class Receita {
     int atual = 0;
     
     public void menu(){
-    Object[] options = {"Cadastrar", "Editar", "Listar", "Buscar pelo mês", "Receita Anual", "Lucro Mensal", "Lucro Anual", "Voltar"};
+    Object[] options = {"Cadastrar", "Editar", "Listar","Receita Anual","Lucro Anual", "Voltar"};
         int menu = 0;
 
-        while (menu != 8) {
+        while (menu != 6) {
             menu = JOptionPane.showOptionDialog(
                     null,
                     "Tabela de receitas"
@@ -43,18 +45,12 @@ public class Receita {
                     listar();
                     break;
                 case 3:
-                    buscarPeloMes();
-                    break;
-                case 4:
                     receitaAnual();
                     break;
-                case 5:
-                    lucroECrescimentoMensal();
-                    break;
-                case 6:
+                case 4:
                     lucroAnual();
                     break;
-                case 7:
+                case 5:
                     return;
                 default:
                     return;
@@ -67,53 +63,41 @@ public class Receita {
     }
     
     public void editar(){
-        int mes = Integer.parseInt(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar"
-    ));
-        ganhosComQuartos[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com quartos"
-    ));
-        ganhosComComidaEBebidas[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com comida e bebidas"
-    ));
-        ganhosComConveniencias[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com conveniências"
-    ));
-        ganhosComServicosExtras[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com serviços extras prestados"
-    ));
-        ganhosComAlugueis[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com aluguéis"
-    ));
-        ganhosComEventos[mes-1] = Double.parseDouble(
-                JOptionPane.showInputDialog(
-                    "Informe o número do mês que deseja editar os ganhos com eventos"
-    ));
-        
-    }
+        Object[] receitas = new Object[atual];
+        for (int i = 0; i < atual; i++) {
+            receitas[i] = meses[i];
+        }
+
+        int posicao = JOptionPane.showOptionDialog(null,
+                atual > 0 ? "Selecione o mês para editar"
+                        : "Nenhum mês cadastrado",
+                "Aviso",
+                0, JOptionPane.QUESTION_MESSAGE, null, receitas, "");
+        if (posicao != JOptionPane.CLOSED_OPTION) {
+            solicitarInformacao(posicao);
+            
+        }
+}
     
     public void listar(){
-        String texto = "";
-        for(int i = 0; i < atual; i ++){
-            texto +=  ganhosComQuartos[i] + ganhosComComidaEBebidas[i] 
-                    + ganhosComConveniencias[i] + ganhosComServicosExtras[i]
-                    + ganhosComAlugueis[i] + ganhosComEventos[i];
-                    
+        Object[] receitas = new Object[atual];
+        for (int i = 0; i < atual; i++) {
+            receitas[i] = meses[i];
         }
-        JOptionPane.showMessageDialog(null, texto);
-    }
-    public void buscarPeloMes(){
-        int mesDesejado = Integer.parseInt(
-                JOptionPane.showInputDialog(
-                        "Informe o número do mês que deseja visualizar"
-        ));
-        apresentarInformacao(mesDesejado-1);
+        
+
+        int posicao = JOptionPane.showOptionDialog(null,
+                atual > 0 ? "Selecione o mês que deseja visualizar"
+                        : "Nenhum mês cadastrado",
+                "Aviso",
+                0, JOptionPane.QUESTION_MESSAGE, null, receitas, "");
+        if (posicao != JOptionPane.CLOSED_OPTION) {
+             apresentarInformacao(posicao);
+            
+            return;
+            
+        }
+
     }
     public void receitaAnual(){
         double total = 0;
@@ -122,26 +106,10 @@ public class Receita {
             total += ganhosComQuartos[i] + ganhosComComidaEBebidas[i] 
                     + ganhosComConveniencias[i] + ganhosComServicosExtras[i] 
                     + ganhosComAlugueis[i] + ganhosComEventos[i];
-            receitasAnuais[i] = total; 
+            
         }
                 JOptionPane.showMessageDialog(null, "A receita anual é de: R$" + total);
         
-    }
-    public void lucroECrescimentoMensal(){
-        double lucroMes = 0;
-        int mes = Integer.parseInt(
-                JOptionPane.showInputDialog(
-                        "Informe o mês que deseja visualizar o lucro"));
-            lucroMes += ganhosComQuartos[mes-1] + ganhosComComidaEBebidas[mes-1] 
-                    + ganhosComConveniencias[mes-1] + ganhosComServicosExtras[mes-1]
-                    + ganhosComAlugueis[mes-1] + ganhosComEventos[mes-1]
-                    - Custos.aguaCustos[mes-1] - Custos.energiaCustos[mes-1]
-                    - Custos.gastosComMantimentos[mes-1] - Custos.gastosComManutencoes[mes-1]
-                    - Custos.gastosComFuncionarios[mes-1] - Custos.gastosComLimpezas[mes-1]
-                    - Custos.gastosComTelefoneEInternets[mes-1];
-            lucrosMensais[mes-1] = lucroMes;
-            
-        JOptionPane.showMessageDialog(null, "O lucro do mês foi de: R$" + lucroMes);
     }
        
     public void lucroAnual(){
@@ -154,8 +122,8 @@ public class Receita {
                     - Custos.aguaCustos[i] - Custos.energiaCustos[i] 
                     - Custos.gastosComMantimentos[i] - Custos.gastosComManutencoes[i] 
                     - Custos.gastosComFuncionarios[i] - Custos.gastosComLimpezas[i] 
-                    - Custos.gastosComTelefoneEInternets[i];
-            lucrosAnuais[i] = lucro;
+                    - Custos.gastosComTelefoneEInternets[i] - Custos.gastosComMarketings[i];
+            
         }
         JOptionPane.showMessageDialog(null, "O lucro anual é de: R$" + lucro);
         
@@ -172,56 +140,182 @@ public class Receita {
         
     }
     public void apresentarInformacao(int posicao){
+            double totalMes = 0;
+            double lucroMes = 0;
+            
+            totalMes += ganhosComQuartos[posicao] + ganhosComComidaEBebidas[posicao] 
+                    + ganhosComConveniencias[posicao] + ganhosComServicosExtras[posicao]
+                    + ganhosComAlugueis[posicao] + ganhosComEventos[posicao];
+            
+            lucroMes += ganhosComQuartos[posicao] + ganhosComComidaEBebidas[posicao] 
+                    + ganhosComConveniencias[posicao] + ganhosComServicosExtras[posicao]
+                    + ganhosComAlugueis[posicao] + ganhosComEventos[posicao]
+                    - Custos.aguaCustos[posicao] - Custos.energiaCustos[posicao]
+                    - Custos.gastosComMantimentos[posicao] - Custos.gastosComManutencoes[posicao]
+                    - Custos.gastosComFuncionarios[posicao] - Custos.gastosComLimpezas[posicao]
+                    - Custos.gastosComTelefoneEInternets[posicao] - Custos.gastosComMarketings[posicao];
+            lucrosMensais[posicao] = lucroMes;
+        
             JOptionPane.showMessageDialog(null, 
                 "Quartos: " + ganhosComQuartos[posicao]
                 + "\nComida e bebidas: " + ganhosComComidaEBebidas[posicao]
                 + "\nConveniências: " + ganhosComConveniencias[posicao]
                 + "\nServiços extras prestado: " + ganhosComServicosExtras[posicao]
                 + "\nAluguéis: " + ganhosComAlugueis[posicao]
-                + "\nEventos: " + ganhosComEventos[posicao]);
+                + "\nEventos: " + ganhosComEventos[posicao]
+                + "\nReeita do mês: " + totalMes
+                + "\nLucro do mês: " + lucroMes);
     }
     public void solicitarInformacao(int posicao){
-        ganhosComQuartos[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com quartos no mês", 
-                ganhosComQuartos[posicao] != 0 ? ganhosComQuartos[posicao] : 0)
-                .replace(" ", "").replace("R$", "")
+         ganhosComQuartos[posicao] = 0;
+         int tenteNovamente = 0;
+          while (ganhosComQuartos[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                     ganhosComQuartos[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com quartos", 
+                    ganhosComQuartos[posicao] != 0 ? ganhosComQuartos[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
+                .replace(".", "").replace(",", ".")
+         );
+                     } else {
+                       ganhosComQuartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComQuartos[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+        
+         ganhosComComidaEBebidas[posicao] = 0;
+         tenteNovamente = 0;
+          while (ganhosComComidaEBebidas[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                   ganhosComComidaEBebidas[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com comida e bebidas",
+                     ganhosComComidaEBebidas[posicao] != 0 ? ganhosComComidaEBebidas[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
+                .replace(".", "").replace(",", ".")
+         );
+                     } else {
+                       ganhosComComidaEBebidas[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComComidaEBebidas[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+            
+                         
+          
+         ganhosComConveniencias[posicao] = 0;
+         tenteNovamente = 0;
+          while (ganhosComConveniencias[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                  ganhosComConveniencias[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com conveniências",
+                     ganhosComConveniencias[posicao] != 0 ? ganhosComConveniencias[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
+                .replace(".", "").replace(",", ".")
+         );
+                     } else {
+                       ganhosComConveniencias[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComConveniencias[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         ganhosComServicosExtras[posicao] = 0;
+         tenteNovamente = 0;
+          while (ganhosComServicosExtras[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                 ganhosComServicosExtras[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com serviços extras prestados",
+                     ganhosComServicosExtras[posicao] != 0 ? ganhosComServicosExtras[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        ganhosComComidaEBebidas[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com Comida e Bebidas",
-                ganhosComComidaEBebidas[posicao] != 0 ? ganhosComComidaEBebidas[posicao] : 0)
-                .replace(" ", "").replace("(R$)", "")
+                     } else {
+                       ganhosComServicosExtras[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComServicosExtras[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         ganhosComAlugueis[posicao] = 0;
+         tenteNovamente = 0;
+          while (ganhosComAlugueis[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                ganhosComAlugueis[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com aluguéis",
+                     ganhosComAlugueis[posicao] != 0 ? ganhosComAlugueis[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        ganhosComConveniencias[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com conveniências", 
-                ganhosComConveniencias[posicao] != 0 ? ganhosComConveniencias[posicao] : 0)
-                .replace(" ", "").replace("R$", "")
+                     } else {
+                       ganhosComAlugueis[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComAlugueis[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         ganhosComEventos[posicao] = 0;
+         tenteNovamente = 0;
+          while (ganhosComEventos[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+               ganhosComEventos[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe os ganhos com eventos",
+                     ganhosComEventos[posicao] != 0 ? ganhosComEventos[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        ganhosComServicosExtras[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com serviços extras prestados",
-                ganhosComServicosExtras[posicao] != 0 ? ganhosComServicosExtras[posicao] : 0)
-                .replace(" ", "").replace("R$", "")
-                .replace(".", "").replace(",", ".")
-        );
-        ganhosComAlugueis[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com aluguéis",
-                ganhosComAlugueis[posicao] != 0 ? ganhosComAlugueis[posicao] : 0)
-                .replace(" ", "").replace("R$", "")
-                .replace(".", "").replace(",", ".")
-        );
-        ganhosComEventos[posicao] = Double.parseDouble(
-        JOptionPane.showInputDialog(
-                "Informe o total ganho com eventos",
-                ganhosComEventos[posicao] != 0 ? ganhosComEventos[posicao] : 0)
-                .replace(" ", "").replace("R$", "")
-                .replace(".", "").replace(",", ".")
-        );
+                     } else {
+                       ganhosComEventos[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         ganhosComEventos[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+  
     }
 }

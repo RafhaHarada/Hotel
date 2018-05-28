@@ -5,7 +5,8 @@ import javax.swing.JOptionPane;
  * @author Cidmar
  */
 public class Custos {
-
+    
+    String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}; 
     static double[] aguaCustos = new double[12];
     static double[] energiaCustos = new double[12];
     static double[] gastosComMantimentos = new double[12];
@@ -13,13 +14,17 @@ public class Custos {
     static double[] gastosComFuncionarios = new double[12];
     static double[] gastosComLimpezas = new double[12];
     static double[] gastosComTelefoneEInternets = new double[12];
+    static double[] gastosComMarketings = new double[12];
     int atual = 0;
+   
+    
+    
     
     public void menu(){
-    Object[] options = {"Cadastrar", "Editar", "Listar", "Buscar pelo mês", "Voltar"};
+    Object[] options = {"Cadastrar", "Editar", "Listar", "Voltar"};
         int menu = 0;
 
-        while (menu != 5) {
+        while (menu != 4) {
             menu = JOptionPane.showOptionDialog(
                     null,
                     "Tabela de custos"
@@ -42,9 +47,6 @@ public class Custos {
                     listar();
                     break;
                 case 3:
-                    buscarPeloMes();
-                    break;
-                case 4:
                     return;
                 default:
                     return;
@@ -86,82 +88,48 @@ public class Custos {
        atual++;
     }
     public void editar(){
-        int mes = Integer.parseInt(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar." 
-                + "\nExemplo: Se quiser editar os custos do mês de Janeiro, digite 1"
-        ));
-        solicitarInformacao(mes);
-        aguaCustos[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Água." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        energiaCustos[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Energia." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        gastosComMantimentos[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Mantimentos." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        gastosComManutencoes[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Manutenção." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        gastosComFuncionarios[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Funcionários." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        gastosComLimpezas[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Limpeza." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
-        
-        gastosComTelefoneEInternets[mes-1] = Double.parseDouble(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja editar os gastos com Telefone e Internet." 
-                + "\nExemplo: Se deseja editar o mês de Outubro digite 10"
-        ));
+       Object[] custos = new Object[atual];
+        for (int i = 0; i < atual; i++) {
+            custos[i] = meses[i];
+        }
+
+        int posicao = JOptionPane.showOptionDialog(null,
+                atual > 0 ? "Selecione o mês para editar"
+                        : "Nenhum mês cadastrado",
+                "Aviso",
+                0, JOptionPane.QUESTION_MESSAGE, null, custos, "");
+        if (posicao != JOptionPane.CLOSED_OPTION) {
+            solicitarInformacao(posicao);
             
-        
-    }
+        }
+}
     public void listar(){
-        String texto = "";
-        for(int i = 0; i < atual; i++){
-            texto+= "Água: " + aguaCustos[i]
-                + "\nEnergia: " + energiaCustos[i]
-                + "\nMantimentos: " + gastosComMantimentos[i] 
-                + "\nManutenção: " + gastosComManutencoes[i]
-                + "\nFucionários: " + gastosComFuncionarios[i]
-                + "\nLimpeza: " + gastosComLimpezas[i]
-                + "\nTelefone e internet: " + gastosComTelefoneEInternets[i];
-                
+         Object[] custos = new Object[atual];
+        for (int i = 0; i < atual; i++) {
+            custos[i] = meses[i];
         }
-        JOptionPane.showMessageDialog(null, texto);
+
+        int posicao = JOptionPane.showOptionDialog(null,
+                atual > 0 ? "Selecione o mês que deseja visualizar"
+                        : "Nenhum mês cadastrado",
+                "Aviso",
+                0, JOptionPane.QUESTION_MESSAGE, null, custos, "");
+        if (posicao != JOptionPane.CLOSED_OPTION) {
+            apresentarInformacao(posicao);
+            return;
+            
+        }
+
     }
-    public void buscarPeloMes(){
-        int mesDesejado = Integer.parseInt(
-            JOptionPane.showInputDialog(
-                "Digite o número equivalente ao mês que deseja visualizar." 
-                + "\nExemplo: Se desejar visualizar o mês de Fevereiro digite 2"
-        ));
-        
-               apresentarInformacao(mesDesejado-1);
-               
-        }
-    
+  
     public void apresentarInformacao(int posicao){
+        double totalMes = 0;
+        
+        totalMes += aguaCustos[posicao] + energiaCustos[posicao] 
+                    + gastosComMantimentos[posicao] + gastosComManutencoes[posicao]
+                    + gastosComFuncionarios[posicao] + gastosComLimpezas[posicao] 
+                    + gastosComTelefoneEInternets[posicao] + gastosComMarketings[posicao];
+        
         JOptionPane.showMessageDialog(null, 
                 "Água: " + aguaCustos[posicao]
                 + "\nEnergia: " + energiaCustos[posicao]
@@ -170,60 +138,210 @@ public class Custos {
                 + "\nFuncionários: " + gastosComFuncionarios[posicao]
                 + "\nLimpeza: " + gastosComLimpezas[posicao]
                 + "\nTelefone e Internet: " + gastosComTelefoneEInternets[posicao]
+                + "\nMarketing: " + gastosComMarketings[posicao]
+                + "\nTotal gasto no mês: " + totalMes
         );
     }
             
     public void solicitarInformacao(int posicao){
-        aguaCustos[posicao] = Double.parseDouble(
+         aguaCustos[posicao] = 0;
+         int tenteNovamente = 0;
+          while (aguaCustos[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                     aguaCustos[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com água", 
                     aguaCustos[posicao] != 0 ? aguaCustos[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
-        );
-        energiaCustos[posicao] = Double.parseDouble(
+         );
+                     } else {
+                       aguaCustos[posicao] = Double.parseDouble(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         aguaCustos[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+        
+         energiaCustos[posicao] = 0;
+         tenteNovamente = 0;
+          while (energiaCustos[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                   energiaCustos[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com energia",
                      energiaCustos[posicao] != 0 ? energiaCustos[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
-        );
-        gastosComMantimentos[posicao] = Double.parseDouble(
+         );
+                     } else {
+                       energiaCustos[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         energiaCustos[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+            
+                         
+          
+         gastosComMantimentos[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComMantimentos[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                  gastosComMantimentos[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com mantimentos",
                      gastosComMantimentos[posicao] != 0 ? gastosComMantimentos[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
-        );
-        gastosComManutencoes[posicao] = Double.parseDouble(
+         );
+                     } else {
+                       gastosComMantimentos[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComMantimentos[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         gastosComManutencoes[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComManutencoes[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                 gastosComManutencoes[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com manutenção",
                      gastosComManutencoes[posicao] != 0 ? gastosComManutencoes[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        gastosComFuncionarios[posicao] = Double.parseDouble(
+                     } else {
+                       gastosComManutencoes[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComManutencoes[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         gastosComFuncionarios[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComFuncionarios[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+                gastosComFuncionarios[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com fucionários",
                      gastosComFuncionarios[posicao] != 0 ? gastosComFuncionarios[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        gastosComLimpezas[posicao] = Double.parseDouble(
+                     } else {
+                       gastosComFuncionarios[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComFuncionarios[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         gastosComLimpezas[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComLimpezas[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+               gastosComLimpezas[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com limpeza",
                      gastosComLimpezas[posicao] != 0 ? gastosComLimpezas[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
-        gastosComTelefoneEInternets[posicao] = Double.parseDouble(
+                     } else {
+                       gastosComLimpezas[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComLimpezas[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
+        
+          
+         gastosComTelefoneEInternets[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComTelefoneEInternets[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+               gastosComTelefoneEInternets[posicao] = Double.parseDouble(
             JOptionPane.showInputDialog(
                 "Informe o valor gasto com telefone e internet",
                      gastosComTelefoneEInternets[posicao] != 0 ? gastosComTelefoneEInternets[posicao] : 0)
                 .replace(" ", "").replace("RS", "")
                 .replace(".", "").replace(",", ".")
         );
+                     } else {
+                       gastosComTelefoneEInternets[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComTelefoneEInternets[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
         
+        gastosComMarketings[posicao] = 0;
+         tenteNovamente = 0;
+          while (gastosComMarketings[posicao] == 0) {
+              try { 
+                  if (tenteNovamente == 0) {
+               gastosComMarketings[posicao] = Double.parseDouble(
+            JOptionPane.showInputDialog(
+                "Informe o valor gasto com marketing",
+                     gastosComMarketings[posicao] != 0 ? gastosComMarketings[posicao] : 0)
+                .replace(" ", "").replace("RS", "")
+                .replace(".", "").replace(",", ".")
+        );
+                     } else {
+                       gastosComMarketings[posicao] = Integer.parseInt(JOptionPane.showInputDialog("Por gentileza, insira somente números"));
+                           }
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
+         gastosComMarketings[posicao] = 0;
+         tenteNovamente = 1;
+                      
+                  }
+              }
+         tenteNovamente = 0;
         
     }
 }
