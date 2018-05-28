@@ -21,10 +21,10 @@ public class Custos {
     
     
     public void menu(){
-    Object[] options = {"Cadastrar", "Editar", "Listar", "Voltar"};
+    Object[] options = {"Cadastrar", "Editar", "Listar", "Gastos do Ano", "Voltar"};
         int menu = 0;
 
-        while (menu != 4) {
+        while (menu != 5) {
             menu = JOptionPane.showOptionDialog(
                     null,
                     "Tabela de custos"
@@ -47,6 +47,8 @@ public class Custos {
                     listar();
                     break;
                 case 3:
+                    gastoAnual();
+                case 4:
                     return;
                 default:
                     return;
@@ -121,7 +123,18 @@ public class Custos {
         }
 
     }
-  
+    
+    public void gastoAnual(){
+        double total = 0;
+        for(int i = 0; i < aguaCustos.length; i++)
+            
+            total += aguaCustos[i] + energiaCustos[i] + gastosComMantimentos[i]
+                     + gastosComManutencoes[i] + gastosComFuncionarios[i]
+                     + gastosComLimpezas[i] + gastosComTelefoneEInternets[i]
+                     + gastosComMarketings[i];
+        JOptionPane.showMessageDialog(null, "O total gasto no ano foi de: " + total);
+    }
+    
     public void apresentarInformacao(int posicao){
         double totalMes = 0;
         
