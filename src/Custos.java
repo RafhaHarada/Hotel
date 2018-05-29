@@ -48,6 +48,7 @@ public class Custos {
                     break;
                 case 3:
                     gastoAnual();
+                    break;
                 case 4:
                     return;
                 default:
@@ -112,7 +113,8 @@ public class Custos {
                     + gastosComTelefoneEInternets[posicao] + gastosComMarketings[posicao];
         
         JOptionPane.showMessageDialog(null, 
-                "Água: " + aguaCustos[posicao]
+                "Lista de Custos"
+                +"\nÁgua: " + aguaCustos[posicao]
                 + "\nEnergia: " + energiaCustos[posicao]
                 + "\nMantimentos: " + gastosComMantimentos[posicao]
                 + "\nManutenção: " + gastosComManutencoes[posicao]

@@ -156,8 +156,9 @@ public class Receita {
             
             double margemDeLucro = lucroMes / totalMes * 100;
             
-            JOptionPane.showMessageDialog(null, 
-                    "Quartos: " + ganhosComQuartos[posicao] 
+            JOptionPane.showMessageDialog(null,
+                    "Lista das receitas"
+                    + "Quartos: " + ganhosComQuartos[posicao] 
                     + "\nComida e bebidas: " + ganhosComComidaEBebidas[posicao]
                     + "\nConveniências: " + ganhosComConveniencias[posicao]
                     + "\nServiços extras prestado: " + ganhosComServicosExtras[posicao]
