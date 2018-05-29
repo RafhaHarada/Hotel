@@ -40,11 +40,11 @@ public class Hospede {
     }
 
     public void menu() {
-        Object[] options = {"Cadastrar Hóspedes", "Editar Hóspedes", "Listar Hóspedes", 
-            "\nPesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Finalizar"};
+        Object[] options = {"Cadastrar", "Editar", "Listar", 
+            "\nPesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Voltar"};
             int menu = 0;
     
-            while (menu != 7) {
+            while (menu != 6) {
                 menu = JOptionPane.showOptionDialog(
                         null,
                         "Administração Hoteleira\n\n"
@@ -54,7 +54,7 @@ public class Hospede {
                         JOptionPane.QUESTION_MESSAGE,
                         null,
                         options,
-                        options[7]
+                        options[6]
                 );
                 switch (menu) {
                     case 0:
