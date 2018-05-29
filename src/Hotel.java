@@ -16,13 +16,13 @@ public class Hotel {
     static int hotelQuartos = 0;
     static int sair = 0;
     static String hotelAvaliacao = "";
+    String telefoneHotel = "";
     String anterior = "";
     String hotelNome = "";
     String endereco = "";
     String email = "";
     Object[] estrelasAvaliacao = {"★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"};
     Object[] options = {"Editar","Informações","Voltar"};
-    int telefoneHotel = 0;
     int i = 0;
 
     public void menu(){
@@ -134,10 +134,10 @@ public class Hotel {
                 endereco = "";
             }
         }
-        while (telefoneHotel == 0 && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
+        while (telefoneHotel.equals("") && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
             try {
                 anterior = "" + telefoneHotel;
-                telefoneHotel = Integer.parseInt(JOptionPane.showInputDialog(null,
+                telefoneHotel = JOptionPane.showInputDialog(null,
                         "Por favor insira o telefone do " + hotelNome + ":",
                         "Cadastro do Hotel",
                         JOptionPane.QUESTION_MESSAGE)
@@ -146,10 +146,10 @@ public class Hotel {
                         .replace("-","")
                         .replace(".","")
                         .replace("(","")
-                        .replace(")",""));
-                if (telefoneHotel == 7247) {
+                        .replace(")","");
+                if (telefoneHotel.equals("sair")) {
                     sair++;
-                    telefoneHotel = Integer.parseInt(anterior);
+                    telefoneHotel = anterior;
                     anterior = "sair";
                 }
                 anterior = "" + telefoneHotel;
@@ -158,7 +158,7 @@ public class Hotel {
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Insira para continuar.\nOu insira \"7247\" para fechar o sistema", "Ops...", JOptionPane.WARNING_MESSAGE);
-                telefoneHotel = 0;
+                telefoneHotel = "";
             }
         }
         while (email.equals("") && sair == 0 || !anterior.equals("sair") && !anterior.equals("")) {
