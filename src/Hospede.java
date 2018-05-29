@@ -40,6 +40,7 @@ public class Hospede {
     }
 
     public void menu() {
+        atualizacaoHospede();
         Object[] options = {"Cadastrar", "Editar", "Listar", 
             "\nPesquisar por nome", "Pesquisar por Check-In", "Pesquisar por Check-Out", "Voltar"};
             int menu = 0;
