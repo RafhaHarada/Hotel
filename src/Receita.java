@@ -158,15 +158,15 @@ public class Receita {
             
             JOptionPane.showMessageDialog(null,
                     "Lista das receitas"
-                    + "Quartos: " + ganhosComQuartos[posicao] 
-                    + "\nComida e bebidas: " + ganhosComComidaEBebidas[posicao]
-                    + "\nConveniências: " + ganhosComConveniencias[posicao]
-                    + "\nServiços extras prestado: " + ganhosComServicosExtras[posicao]
-                    + "\nAluguéis: " + ganhosComAlugueis[posicao]
-                    + "\nEventos: " + ganhosComEventos[posicao]
-                    + "\nReceita do mês: " + totalMes
-                    + "\nLucro do mês: " + lucroMes
-                    + "\nMargem de lucro: " + margemDeLucro + "%");
+                    + "Quartos: R$" + String.format("%.2f", ganhosComQuartos[posicao]) 
+                    + "\nComida e bebidas: R$" + String.format("%.2f", ganhosComComidaEBebidas[posicao])
+                    + "\nConveniências: R$" + String.format("%.2f", ganhosComConveniencias[posicao])
+                    + "\nServiços extras prestado: R$" + String.format("%.2f", ganhosComServicosExtras[posicao])
+                    + "\nAluguéis: R$" + String.format("%.2f", ganhosComAlugueis[posicao])
+                    + "\nEventos: R$" + String.format("%.2f", ganhosComEventos[posicao])
+                    + "\nReceita do mês: R$" + String.format("%.2f", totalMes)
+                    + "\nLucro do mês: R$" + String.format("%.2f", lucroMes)
+                    + "\nMargem de lucro: R$" + String.format("%.2f", margemDeLucro)  + "%");
     }
     public void solicitarInformacao(int posicao){
          ganhosComQuartos[posicao] = 0;

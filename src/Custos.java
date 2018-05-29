@@ -101,7 +101,7 @@ public class Custos {
                      + gastosComManutencoes[i] + gastosComFuncionarios[i]
                      + gastosComLimpezas[i] + gastosComTelefoneEInternets[i]
                      + gastosComMarketings[i];
-        JOptionPane.showMessageDialog(null, "O total gasto no ano foi de: " + total);
+        JOptionPane.showMessageDialog(null, "O total gasto no ano foi de: R$" + total);
     }
     
     public void apresentarInformacao(int posicao){
@@ -114,15 +114,15 @@ public class Custos {
         
         JOptionPane.showMessageDialog(null, 
                 "Lista de Custos"
-                +"\nÁgua: " + aguaCustos[posicao]
-                + "\nEnergia: " + energiaCustos[posicao]
-                + "\nMantimentos: " + gastosComMantimentos[posicao]
-                + "\nManutenção: " + gastosComManutencoes[posicao]
-                + "\nFuncionários: " + gastosComFuncionarios[posicao]
-                + "\nLimpeza: " + gastosComLimpezas[posicao]
-                + "\nTelefone e Internet: " + gastosComTelefoneEInternets[posicao]
-                + "\nMarketing: " + gastosComMarketings[posicao]
-                + "\nTotal gasto no mês: " + totalMes
+                +"\nÁgua: R$" + String.format("%.2f", aguaCustos[posicao])
+                + "\nEnergia: R$" + String.format("%.2f", energiaCustos[posicao])
+                + "\nMantimentos: R$" + String.format("%.2f", gastosComMantimentos[posicao])
+                + "\nManutenção: R$" + String.format("%.2f", gastosComManutencoes[posicao])
+                + "\nFuncionários: R$" + String.format("%.2f", gastosComFuncionarios[posicao])
+                + "\nLimpeza: R$" + String.format("%.2f", gastosComLimpezas[posicao])
+                + "\nTelefone e Internet: R$" + String.format("%.2f", gastosComTelefoneEInternets[posicao])
+                + "\nMarketing: R$" + String.format("%.2f", gastosComMarketings[posicao])
+                + "\nTotal gasto no mês: R$" + String.format("%.2f", totalMes)
         );
     }
             
