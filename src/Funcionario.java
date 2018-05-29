@@ -27,7 +27,7 @@ public class Funcionario {
     int[] cargasHorarias = new int[1000];
     double[] salarios = new double[1000];
     String[] desempenhos = new String[1000];
-
+    Object[] options = {"Cadastrar","Editar","Listar","Pesquisar pelo nome","Pesquisar pelo cargo","Voltar"};
     int atual = 0;
 
     public void cadastrar() {
@@ -36,42 +36,34 @@ public class Funcionario {
     }
 
     public void menu() {
-        int menu = Integer.parseInt(
-                JOptionPane.showInputDialog(null,
-                        "Digite o número referente a tarefa que deseje executar:"
-                        + "\n"
-                        + "\n1 - Cadastrar funcionários"
-                        + "\n"
-                        + "\n2 - Editar funcionários"
-                        + "\n"
-                        + "\n3 - Listar funcionários"
-                        + "\n"
-                        + "\n4 - Pesquisar pelo nome"
-                        + "\n"
-                        + "\n5 - Pesquisar pelo cargo"
-                        + "\n"
-                        + "\n6 - Finalizar"
-                        + "\n", "",
-                        JOptionPane.QUESTION_MESSAGE));
+        int menu = JOptionPane.showOptionDialog(null,
+                        "Escolha referente a tarefa que deseje executar:\n",
+                        "Funcionários",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]
+                        );
 
         while (menu != 6) {
             switch (menu) {
-                case 1:
+                case 0:
                     cadastrar();
                     break;
-                case 2:
+                case 1:
                     Editar();
                     break;
-                case 3:
+                case 2:
                     Listar();
                     break;
-                case 4:
+                case 3:
                     PesquisarPeloNome();
                     break;
-                case 5:
+                case 4:
                     PesquisarPeloCargo();
                     break;
-                case 6:
+                case 5:
                     return;
 
                 default:
@@ -176,7 +168,8 @@ public class Funcionario {
                     "Digite o sexo deste funcionário :"
                             + "\n"
                             + "\nSe o funcionário for do sexo Feminino digite 'F'"
-                            + "\nmas se o funcionário for do sexo masculino  digite 'M'").charAt(0);
+                            + "\nmas se o funcionário for do sexo masculino  digite 'M'"
+                            + "\n").charAt(0);
             cargos[posicao] = JOptionPane.showInputDialog(
                     "Digite o cargo que este funcionário exerce :");
             cargasHorarias[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
