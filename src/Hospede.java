@@ -208,7 +208,7 @@ public class Hospede {
                 +"\n3 - " +"Se o número referente ao mês for um número menor que 10, que contém apenas um dígito"
                 +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
                 +"\n"
-                ).replace("-","/").replace("","/");
+                ).replace("-","/").replace("/","");
         checkout[posicao] = JOptionPane.showInputDialog(
                 "Digite a data de check-out deste hóspede: "
                 +"\n"
@@ -224,7 +224,7 @@ public class Hospede {
                 +"\n3 - " +"Se o número referente ao mês for um número menor que 10, que contém apenas um dígito"
                 +"\ncomo por exemplo, 'Fevereiro' que é '2' então escreva '02'"
                 +"\n"
-                ).replace("-","/").replace("","/");
+                ).replace("-","/").replace("/","");
         quartos[posicao] = Integer.parseInt(JOptionPane.showInputDialog(
                 "informe o quarto em que este hóspede alugou: "));
         receita[posicao] = Double.parseDouble(JOptionPane.showInputDialog(
