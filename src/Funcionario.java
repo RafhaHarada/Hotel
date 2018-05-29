@@ -69,21 +69,15 @@ public class Funcionario {
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida");
             }
-            menu = Integer.parseInt(
-                    JOptionPane.showInputDialog(null,
-                            "1 - Cadastrar funcionários"
-                            + "\n"
-                            + "\n2 - Editar funcionários"
-                            + "\n"
-                            + "\n3 - Listar funcionários"
-                            + "\n"
-                            + "\n4 - Pesquisar pelo nome"
-                            + "\n"
-                            + "\n5 - Pesquisar pelo cargo"
-                            + "\n"
-                            + "\n6 - Voltar"
-                            + "\n", "",
-                            JOptionPane.QUESTION_MESSAGE));
+            menu = JOptionPane.showOptionDialog(null,
+                        "Escolha referente a tarefa que deseje executar:\n",
+                        "Funcionários",
+                        0,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]
+                        );
 
         }
     }
